@@ -4,11 +4,23 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
-    class Slug : Mass
+    public class Slug : Mass
     {
+        public double Value { get; private set; }
+
+        public Slug(double value)
+        {
+            Value = value;
+        }
+
         public override Kilogram Convert()
         {
-            throw new NotImplementedException();
+            return new Kilogram(this.Value * 14.593903); // One slug has the mass of 14.593903kg
+        }
+
+        public override string ToString()
+        {
+            return Value + "sl";
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
-    class Tonne : Mass
+    public class Tonne : Mass
     {
         public double Value { get; private set; }
 
@@ -15,7 +15,12 @@ namespace PhysUnitLibrary.Mass_Units
 
         public override Kilogram Convert()
         {
-            throw new NotImplementedException();
+            return new Kilogram(this.Value * 1000);
+        }
+
+        public override string ToString()
+        {
+            return Value + "t";
         }
     }
 }
