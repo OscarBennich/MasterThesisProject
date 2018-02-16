@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
+    /// <summary>
+    /// Unit of mass - Equal to 1.660539040 * 10^-27 kg
+    /// </summary>
     public class AtomicMass : Mass
     {
         public double Value { get; private set; }

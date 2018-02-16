@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
+    /// <summary>
+    /// Unit of mass - Equal to 2.17647051 * 10^-8 kg
+    /// </summary>
     public class PlanckMass : Mass
     {
         public double Value { get; private set; }

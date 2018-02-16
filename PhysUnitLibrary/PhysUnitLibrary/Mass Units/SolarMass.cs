@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
+    /// <summary>
+    /// Unit of mass - Equal to 1.98855 * 10^30 kg
+    /// </summary>
     public class SolarMass : Mass
     {
         public double Value { get; private set; }

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
+    /// <summary>
+    /// Unit of mass - Equal to 1000kg
+    /// </summary>
     public class Tonne : Mass
     {
         public double Value { get; private set; }

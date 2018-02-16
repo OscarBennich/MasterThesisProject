@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Mass_Units
 {
+    /// <summary>
+    /// Unit of mass - Equal to 0.45359237kg
+    /// </summary>
     public class Pound : Mass
     {
         public double Value { get; private set; }

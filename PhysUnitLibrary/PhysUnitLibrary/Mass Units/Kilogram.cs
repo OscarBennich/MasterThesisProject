@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary
-{
+{   
+    /// <summary>
+    /// Basic unit of mass
+    /// </summary>
     public class Kilogram : Mass
     {
         public double Value { get; private set; }
@@ -36,7 +39,7 @@ namespace PhysUnitLibrary
 
         public static implicit operator Kilogram(Slug slug)
         {
-            return new Kilogram(slug.Value * 14.593903); // One slug is equalt to 14.593903kg
+            return new Kilogram(slug.Value * 14.593903); // One slug is equal to 14.593903kg
         }
 
         public static implicit operator Kilogram(SolarMass solarMass)
