@@ -6,5 +6,9 @@ namespace PhysUnitLibrary.Mass_Units
 {
     class Slug : Mass
     {
+        public override Kilogram Convert()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

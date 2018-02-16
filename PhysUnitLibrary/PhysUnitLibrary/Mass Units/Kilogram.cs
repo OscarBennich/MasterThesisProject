@@ -13,6 +13,11 @@ namespace PhysUnitLibrary
             Value = value;
         }
 
+        public override Kilogram Convert()
+        {
+            return this;
+        }
+
         public override string ToString()
         {
             return Value + "kg";

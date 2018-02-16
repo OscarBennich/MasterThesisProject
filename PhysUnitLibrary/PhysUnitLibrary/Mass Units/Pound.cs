@@ -12,5 +12,15 @@ namespace PhysUnitLibrary.Mass_Units
         {
             Value = value;
         }
+
+        public override Kilogram Convert()
+        {
+            return new Kilogram(this.Value * 0.45359237); //One pound is equal to 0.45359237 kilograms
+        }
+
+        public override string ToString()
+        {
+            return Value + "lb";
+        }
     }
 }

@@ -12,5 +12,10 @@ namespace PhysUnitLibrary.Mass_Units
         {
             Value = value;
         }
+
+        public override Kilogram Convert()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
