@@ -55,6 +55,39 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
+        public void SubtractingTwoMasssesTest()
+        {
+            Kilogram mass1 = new Kilogram(500);
+            Pound mass2 = new Pound(1000);
+
+            Kilogram kilogram = mass1 - mass2;
+
+            Assert.AreEqual(expected: mass1.Value - (mass2.Value * 0.45359237), actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void MultiplyingTwoMassesTest()
+        {
+            Kilogram mass1 = new Kilogram(500);
+            Pound mass2 = new Pound(1000);
+
+            Kilogram kilogram = mass1 * mass2;
+
+            Assert.AreEqual(expected: mass1.Value * (mass2.Value * 0.45359237), actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void DividingTwoMassesTest()
+        {
+            Kilogram mass1 = new Kilogram(500);
+            Pound mass2 = new Pound(1000);
+
+            Kilogram kilogram = mass1 / mass2;
+
+            Assert.AreEqual(expected: mass1.Value / (mass2.Value * 0.45359237), actual: kilogram.Value);
+        }
+
+        [TestMethod]
         public void AddingPoundToSolarmassTest()
         {
             Pound mass1 = new Pound(500);
