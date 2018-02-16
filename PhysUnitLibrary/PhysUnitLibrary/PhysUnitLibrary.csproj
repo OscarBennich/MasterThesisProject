@@ -9,7 +9,6 @@
     <Folder Include="Electric Current Units\" />
     <Folder Include="Length Units\" />
     <Folder Include="Luminous Intensity Units\" />
-    <Folder Include="Mass Units\" />
     <Folder Include="Time Units\" />
     <Folder Include="Thermodynamic Temperature Units\" />
   </ItemGroup>

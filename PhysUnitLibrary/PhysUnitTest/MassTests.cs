@@ -9,7 +9,61 @@ namespace PhysUnitTest
     public class MassTests
     {
         [TestMethod]
-        public void AddingKiloToPoundTest()
+        public void ConversionFromPoundToKilo()
+        {
+            int value = 1000;
+            Kilogram kilogram = new Pound(value);
+
+            Assert.AreEqual(expected: value * 0.45359237, actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromTonneToKilo()
+        {
+            int value = 100;
+            Kilogram kilogram = new Tonne(value);
+
+            Assert.AreEqual(expected: value * 1000, actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromAtomicMassToKilo()
+        {
+            long value = 10000000000000000;
+            Kilogram kilogram = new AtomicMass(value);
+
+            Assert.AreEqual(expected: value * (1.660539040 * Math.Pow(10, -27)), actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromPlanckMassToKilo()
+        {
+            long value = 100000000000000000;
+            Kilogram kilogram = new PlanckMass(value);
+
+            Assert.AreEqual(expected: value * (2.17647051 * Math.Pow(10, -8)), actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromSlugToKilo()
+        {
+            int value = 100;
+            Kilogram kilogram = new Slug(value);
+
+            Assert.AreEqual(expected: value * 14.593903, actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromSolarMassToKilo()
+        {
+            int value = 100;
+            Kilogram kilogram = new SolarMass(value);
+
+            Assert.AreEqual(expected: value * (1.98855 * Math.Pow(10, 30)), actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void AddingKiloToPound()
         {
             Kilogram mass1 = new Kilogram(500);
             Pound mass2 = new Pound(1000);
@@ -20,7 +74,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AddingPoundToPoundTest()
+        public void AddingPoundToPound()
         {
             Pound mass1 = new Pound(500);
             Pound mass2 = new Pound(1000);
@@ -31,7 +85,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AddingMoreThanTwoMassesTest()
+        public void AddingMoreThanTwoMasses()
         {
             Pound mass1 = new Pound(500);
             Pound mass2 = new Pound(1000);
@@ -43,7 +97,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AddingThreeDifferentMassesTest()
+        public void AddingThreeDifferentMasses()
         {
             Pound mass1 = new Pound(500);
             Pound mass2 = new Pound(1000);
@@ -55,7 +109,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void SubtractingTwoMasssesTest()
+        public void SubtractingTwoMassses()
         {
             Kilogram mass1 = new Kilogram(500);
             Pound mass2 = new Pound(1000);
@@ -66,7 +120,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void MultiplyingTwoMassesTest()
+        public void MultiplyingTwoMasses()
         {
             Kilogram mass1 = new Kilogram(500);
             Pound mass2 = new Pound(1000);
@@ -77,7 +131,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void DividingTwoMassesTest()
+        public void DividingTwoMasses()
         {
             Kilogram mass1 = new Kilogram(500);
             Pound mass2 = new Pound(1000);
@@ -88,7 +142,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AddingPoundToSolarmassTest()
+        public void AddingPoundToSolarmass()
         {
             Pound mass1 = new Pound(500);
             SolarMass mass2 = new SolarMass(1);
@@ -101,7 +155,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AtomicMassTest()
+        public void AtomicMass()
         {
             AtomicMass mass1 = new AtomicMass(100000);
             AtomicMass mass2 = new AtomicMass(1000);
@@ -112,7 +166,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AddingAllMassesTest()   
+        public void AddingAllMasses()   
         {
             AtomicMass mass1 = new AtomicMass(100000000000000000);
             Kilogram mass2 = new Kilogram(400);
@@ -128,49 +182,49 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void AtomicMassAbbreviationTest()
+        public void AtomicMassAbbreviation()
         {
             AtomicMass atomicMass = new AtomicMass(1);
             Assert.AreEqual(expected: "1u", actual: atomicMass.ToString());
         }
 
         [TestMethod]
-        public void KilogramAbbreviationTest()
+        public void KilogramAbbreviation()
         {
             Kilogram kilogram = new Kilogram(1);
             Assert.AreEqual(expected: "1kg", actual: kilogram.ToString());
         }
 
         [TestMethod]
-        public void PlanckMassAbbreviationTest()
+        public void PlanckMassAbbreviation()
         {
             PlanckMass planckMass = new PlanckMass(1);
             Assert.AreEqual(expected: "1mP", actual: planckMass.ToString());
         }
 
         [TestMethod]
-        public void PoundAbbreviationTest()
+        public void PoundAbbreviation()
         {
             Pound pound = new Pound(1);
             Assert.AreEqual(expected: "1lb", actual: pound.ToString());
         }
 
         [TestMethod]
-        public void SlugAbbreviationTest()
+        public void SlugAbbreviation()
         {
             Slug slug = new Slug(1);
             Assert.AreEqual(expected: "1sl", actual: slug.ToString());
         }
 
         [TestMethod]
-        public void SolarMassAbbreviationTest()
+        public void SolarMassAbbreviation()
         {
             SolarMass solarMass = new SolarMass(1);
             Assert.AreEqual(expected: "1Mo", actual: solarMass.ToString());
         }
 
         [TestMethod]
-        public void TonneAbbreviationTest()
+        public void TonneAbbreviation()
         {
             Tonne tonne = new Tonne(1);
             Assert.AreEqual(expected: "1t", actual: tonne.ToString());

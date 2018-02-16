@@ -15,7 +15,7 @@ namespace PhysUnitLibrary.Mass_Units
 
         public override Kilogram Convert()
         {
-            return new Kilogram(this.Value * 14.593903); // One slug has the mass of 14.593903kg
+            return new Kilogram(this.Value * 14.593903);
         }
 
         public override string ToString()
