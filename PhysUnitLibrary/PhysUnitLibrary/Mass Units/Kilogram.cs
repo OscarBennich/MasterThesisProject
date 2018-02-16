@@ -12,5 +12,10 @@ namespace PhysUnitLibrary
         {
             Value = value;
         }
+
+        public override string ToString()
+        {
+            return Value + "kg";
+        }
     }
 }

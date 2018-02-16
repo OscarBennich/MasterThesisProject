@@ -6,5 +6,6 @@ namespace PhysUnitLibrary.Mass_Units
 {
     class AtomicMass : Mass
     {
+
     }
 }
