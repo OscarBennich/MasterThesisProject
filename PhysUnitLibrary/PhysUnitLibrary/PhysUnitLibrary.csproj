@@ -4,4 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Amount of Substance Units\" />
+    <Folder Include="Electric Current Units\" />
+    <Folder Include="Length Units\" />
+    <Folder Include="Luminous Intensity Units\" />
+    <Folder Include="Mass Units\" />
+    <Folder Include="Time Units\" />
+    <Folder Include="Thermodynamic Temperature Units\" />
+  </ItemGroup>
+
 </Project>
