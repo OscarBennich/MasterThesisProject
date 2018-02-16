@@ -2,7 +2,10 @@
 using System;
 
 namespace PhysUnitLibrary
-{
+{   
+    /// <summary>
+    /// One of 7 physical unit dimensions
+    /// </summary>
     public abstract class Mass 
     {
         // All inheriting classes must define how they are to be converted into kilogram

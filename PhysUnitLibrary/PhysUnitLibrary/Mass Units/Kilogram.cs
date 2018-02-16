@@ -17,6 +17,7 @@ namespace PhysUnitLibrary
             Value = value;
         }
 
+        #region Conversion methods 
         public override Kilogram Convert()
         {
             return this;
@@ -51,6 +52,7 @@ namespace PhysUnitLibrary
         {
             return new Kilogram(tonne.Value * 1000); // One tonne is equal to 1000kg
         }
+        #endregion
 
         public override string ToString()
         {

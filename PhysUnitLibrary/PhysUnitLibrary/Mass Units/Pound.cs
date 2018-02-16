@@ -16,10 +16,42 @@ namespace PhysUnitLibrary.Mass_Units
             Value = value;
         }
 
+        #region Conversion Methods
         public override Kilogram Convert()
         {
-            return new Kilogram(this.Value * 0.45359237); //One pound is equal to 0.45359237 kilograms
+            return new Kilogram(this.Value * 0.45359237);
         }
+
+        public static implicit operator Pound(Kilogram kilogram)
+        {
+            return new Pound(kilogram.Value * 2.20462262); // One pound is equal to 2.20462262kg
+        }
+
+        public static implicit operator Pound(AtomicMass atomicMass)
+        {
+            return atomicMass.Convert();
+        }
+
+        public static implicit operator Pound(PlanckMass planckMass)
+        {
+            return planckMass.Convert();
+        }
+
+        public static implicit operator Pound(Slug slug)
+        {
+            return slug.Convert();
+        }
+
+        public static implicit operator Pound(SolarMass solarMass)
+        {
+            return solarMass.Convert();
+        }
+
+        public static implicit operator Pound(Tonne tonne)
+        {
+            return tonne.Convert();
+        }
+        #endregion
 
         public override string ToString()
         {
