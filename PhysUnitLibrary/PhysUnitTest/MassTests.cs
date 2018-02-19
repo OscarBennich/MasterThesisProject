@@ -21,55 +21,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void ConversionFromAtomicMassToTonne()
-        {
-            int value = 10000000;
-            Tonne tonne = new AtomicMass(value);
-
-            Assert.AreEqual(expected: value * (1.660539040 * Math.Pow(10, -27)) / 1000, actual: tonne.Value);
-        }
-
-        [TestMethod]
-        public void ConversionFromTonneToAtomicMass()
-        {
-            int value = 10;
-            AtomicMass atomicMass = new Tonne(value);
-
-            Assert.AreEqual(expected: value * 1000 * (6.0221366516752 * Math.Pow(10, 26)), actual: atomicMass.Value);
-        }
-
-        [TestMethod]
-        public void ConversionFromAtomicMassToSolarMass()
-        {
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void ConversionFromSolarMassToAtomicMass()
-        {
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void ConversionFromAtomicMassToSlug()
-        {
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void ConversionFromSlugToAtomicMass()
-        {
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
         public void ConversionFromAtomicMassToPlanckMass()
-        {
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void ConversionFromPlanckMassToAtomicMass()
         {
             throw new NotImplementedException();
         }
@@ -81,33 +33,119 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void ConversionFromPoundToAtomicMass()
+        public void ConversionFromAtomicMassToSlug()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromAtomicMassToSolarMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromAtomicMassToTonne()
+        {
+            int value = 10000000;
+            Tonne tonne = new AtomicMass(value);
+
+            Assert.AreEqual(expected: value * (1.660539040 * Math.Pow(10, -27)) / 1000, actual: tonne.Value);
+        }
+        #endregion
+
+        #region Kilogram Conversion Tests
+        [TestMethod]
+        public void ConversionFromKiloToAtomicMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromKiloToPlanckMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromKiloToPound()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromKiloToSlug()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromKiloToSolarMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromKiloToTonne()
         {
             throw new NotImplementedException();
         }
         #endregion
 
-        #region Slug Conversion Tests
+        #region PlanckMass Conversion Tests
         [TestMethod]
-        public void ConversionFromSlugToPound()
+        public void ConversionFromPlanckMassToAtomicMass()
         {
-            int value = 1000;
-            Pound pound = new Slug(value);
-
-            Assert.AreEqual(expected: value * 14.593903 * 2.20462262, actual: pound.Value);
+            throw new NotImplementedException();
         }
 
         [TestMethod]
-        public void ConversionFromPoundToSlug()
+        public void ConversionFromPlanckMassToKilo()
         {
-            int value = 1000;
-            Slug slug = new Pound(value);
+            long value = 100000000000000000;
+            Kilogram kilogram = new PlanckMass(value);
 
-            Assert.AreEqual(expected: value * 0.45359237 * 0.0685217659, actual: slug.Value);
+            Assert.AreEqual(expected: value * (2.17647051 * Math.Pow(10, -8)), actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromPlanckMassToPound()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromPlanckMassToSlug()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromPlanckMassToSolarMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromPlanckMassToTonne()
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
         #region Pound Conversion Tests
+        [TestMethod]
+        public void ConversionFromPoundToAtomicMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromPoundToPlanckMass()
+        {
+            throw new NotImplementedException();
+        }
+
         [TestMethod]
         public void ConversionFromPoundToKilo()
         {
@@ -118,22 +156,34 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void ConversionFromTonneToKilo()
+        public void ConversionFromPoundToSlug()
         {
-            int value = 100;
-            Kilogram kilogram = new Tonne(value);
+            int value = 1000;
+            Slug slug = new Pound(value);
 
-            Assert.AreEqual(expected: value * 1000, actual: kilogram.Value);
+            Assert.AreEqual(expected: value * 0.45359237 * 0.0685217659, actual: slug.Value);
         }
-        #endregion
 
         [TestMethod]
-        public void ConversionFromPlanckMassToKilo()
+        public void ConversionFromPoundToSolarMass()
         {
-            long value = 100000000000000000;
-            Kilogram kilogram = new PlanckMass(value);
+            throw new NotImplementedException();
+        }
 
-            Assert.AreEqual(expected: value * (2.17647051 * Math.Pow(10, -8)), actual: kilogram.Value);
+        [TestMethod]
+        public void ConversionFromPoundToTonne()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        #endregion
+
+        #region Slug Conversion Tests
+        [TestMethod]
+        public void ConversionFromSlugToAtomicMass()
+        {
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -146,6 +196,42 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
+        public void ConversionFromSlugToPlanckMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromSlugToPound()
+        {
+            int value = 1000;
+            Pound pound = new Slug(value);
+
+            Assert.AreEqual(expected: value * 14.593903 * 2.20462262, actual: pound.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromSlugToSolarMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromSlugToTonne()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Solar Mass Conversion Tests
+        [TestMethod]
+        public void ConversionFromSolarMassToAtomicMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
         public void ConversionFromSolarMassToKilo()
         {
             int value = 100;
@@ -153,7 +239,77 @@ namespace PhysUnitTest
 
             Assert.AreEqual(expected: value * (1.98855 * Math.Pow(10, 30)), actual: kilogram.Value);
         }
-#endregion
+
+        [TestMethod]
+        public void ConversionFromSolarMassToPlanckMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromSolarMassToPound()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromSolarMassToSlug()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromSolarMassToTonne()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Tonne Conversion Tests
+        [TestMethod]
+        public void ConversionFromTonneToAtomicMass()
+        {
+            int value = 10;
+            AtomicMass atomicMass = new Tonne(value);
+
+            Assert.AreEqual(expected: value * 1000 * (6.0221366516752 * Math.Pow(10, 26)), actual: atomicMass.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromTonneToKilo()
+        {
+            int value = 100;
+            Kilogram kilogram = new Tonne(value);
+
+            Assert.AreEqual(expected: value * 1000, actual: kilogram.Value);
+        }
+
+        [TestMethod]
+        public void ConversionFromTonneToPlanckMass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromTonneToPound()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromTonneToSlug()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ConversionFromTonneToSolarMass()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #endregion
 
         #region Operator Tests
         [TestMethod]
