@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Amount of Substance Units\" />
     <Folder Include="Electric Current Units\" />
     <Folder Include="Luminous Intensity Units\" />
     <Folder Include="Thermodynamic Temperature Units\" />
