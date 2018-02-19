@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Amount of Substance Units\" />
     <Folder Include="Electric Current Units\" />
-    <Folder Include="Length Units\" />
     <Folder Include="Luminous Intensity Units\" />
     <Folder Include="Time Units\" />
     <Folder Include="Thermodynamic Temperature Units\" />
