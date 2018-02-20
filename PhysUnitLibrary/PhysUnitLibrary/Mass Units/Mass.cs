@@ -6,7 +6,7 @@ namespace PhysUnitLibrary
     /// <summary>
     /// One of 7 physical unit dimensions
     /// </summary>
-    public abstract class Mass 
+    public abstract class Mass : PhysicalUnit
     {
         // All inheriting classes must define how they are to be converted into kilogram
         // Kilogram being the basic unit of mass 

@@ -6,7 +6,7 @@ namespace PhysUnitLibrary.Time_Units
 {
     public class Second : Time
     {
-        public double Value { get; private set; }
+        //public double Value { get; private set; }
 
         public Second(double value)
         {

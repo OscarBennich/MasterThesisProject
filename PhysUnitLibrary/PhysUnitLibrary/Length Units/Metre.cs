@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Length_Units
 {
-    public class Metre
+    public class Metre : Length
     {
-        public double Value { get; private set; }
+        //public double Value { get; private set; }
 
         public Metre(double value)
         {
