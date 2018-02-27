@@ -49,7 +49,7 @@ namespace PhysUnitLibrary
         }
 
         public static implicit operator Kilogram(Tonne tonne)
-        {
+        {   
             return new Kilogram(tonne.Value * 1000); // One tonne is equal to 1000kg
         }
         #endregion

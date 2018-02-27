@@ -5,9 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Amount of Substance Units\" />
-    <Folder Include="Luminous Intensity Units\" />
-    <Folder Include="Non-SI Units\" />
+    <Compile Remove="Amount of Substance Units\**" />
+    <Compile Remove="Electric Current Units\**" />
+    <Compile Remove="Luminous Intensity Units\**" />
+    <Compile Remove="Non-SI Units\**" />
+    <Compile Remove="Thermodynamic Temperature Units\**" />
+    <EmbeddedResource Remove="Amount of Substance Units\**" />
+    <EmbeddedResource Remove="Electric Current Units\**" />
+    <EmbeddedResource Remove="Luminous Intensity Units\**" />
+    <EmbeddedResource Remove="Non-SI Units\**" />
+    <EmbeddedResource Remove="Thermodynamic Temperature Units\**" />
+    <None Remove="Amount of Substance Units\**" />
+    <None Remove="Electric Current Units\**" />
+    <None Remove="Luminous Intensity Units\**" />
+    <None Remove="Non-SI Units\**" />
+    <None Remove="Thermodynamic Temperature Units\**" />
   </ItemGroup>
 
 </Project>

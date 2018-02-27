@@ -17,7 +17,6 @@ namespace PhysUnitTest
         {
             int value1 = 100;
             int value2 = 100;
-            int value3 = 100;
 
             PhysicalUnit second = new Second(value1);
             PhysicalUnit metre = new Metre(value2);

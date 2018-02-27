@@ -16,14 +16,12 @@ namespace PhysUnitLibrary
         {   
             if(unit1.GetType() == typeof(Metre) && unit2.GetType() == typeof(Second))
             {
-
                 return new Velocity(unit1.Value / unit2.Value);
             }
             else
             {
                 return null;
             }
-            
         }
     }
 }
