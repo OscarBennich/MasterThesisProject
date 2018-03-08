@@ -9,11 +9,24 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Pound : Mass
     {
-        public double Value { get; private set; }
+        //public double Value { get; private set; }
 
         public Pound(double value)
         {
             Value = value;
+            LengthDimension = 0;
+            TimeDimension = 0;
+            MassDimension = 1;
+        }
+
+        public Pound(double value, double minValue, double maxValue)
+        {
+            Value = value;
+            LengthDimension = 0;
+            TimeDimension = 0;
+            MassDimension = 1;
+            MinValue = minValue;
+            MaxValue = maxValue;
         }
 
         #region Conversion Methods
@@ -27,25 +40,25 @@ namespace PhysUnitLibrary.Mass_Units
             return new Pound(kilogram.Value * 2.20462262); // One pound is equal to 2.20462262kg
         }
 
-        public static implicit operator Pound(AtomicMass atomicMass)
-        {
-            return atomicMass.Convert();
-        }
+        //public static implicit operator Pound(AtomicMass atomicMass)
+        //{
+        //    return atomicMass.Convert();
+        //}
 
-        public static implicit operator Pound(PlanckMass planckMass)
-        {
-            return planckMass.Convert();
-        }
+        //public static implicit operator Pound(PlanckMass planckMass)
+        //{
+        //    return planckMass.Convert();
+        //}
 
-        public static implicit operator Pound(Slug slug)
-        {
-            return slug.Convert();
-        }
+        //public static implicit operator Pound(Slug slug)
+        //{
+        //    return slug.Convert();
+        //}
 
-        public static implicit operator Pound(SolarMass solarMass)
-        {
-            return solarMass.Convert();
-        }
+        //public static implicit operator Pound(SolarMass solarMass)
+        //{
+        //    return solarMass.Convert();
+        //}
 
         public static implicit operator Pound(Tonne tonne)
         {

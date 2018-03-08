@@ -22,4 +22,33 @@
     <None Remove="Thermodynamic Temperature Units\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Length Units\AstronomicalUnit.cs" />
+    <Compile Remove="Length Units\Chain.cs" />
+    <Compile Remove="Length Units\EarthRadius.cs" />
+    <Compile Remove="Length Units\Fathom.cs" />
+    <Compile Remove="Length Units\Fermi.cs" />
+    <Compile Remove="Length Units\Foot.cs" />
+    <Compile Remove="Length Units\HubbleLength.cs" />
+    <Compile Remove="Length Units\Inch.cs" />
+    <Compile Remove="Length Units\Kilometre.cs" />
+    <Compile Remove="Length Units\League.cs" />
+    <Compile Remove="Length Units\LightYear.cs" />
+    <Compile Remove="Length Units\Line.cs" />
+    <Compile Remove="Length Units\LunarDistance.cs" />
+    <Compile Remove="Length Units\Micron.cs" />
+    <Compile Remove="Length Units\Mile.cs" />
+    <Compile Remove="Length Units\NauticalMile.cs" />
+    <Compile Remove="Length Units\Parsec.cs" />
+    <Compile Remove="Length Units\Rod.cs" />
+    <Compile Remove="Length Units\ScandinavianMile.cs" />
+    <Compile Remove="Length Units\Thou.cs" />
+    <Compile Remove="Length Units\XUnit.cs" />
+    <Compile Remove="Length Units\Yard.cs" />
+    <Compile Remove="Length Units\Ångström.cs" />
+    <Compile Remove="Time Units\Day.cs" />
+    <Compile Remove="Time Units\Hour.cs" />
+    <Compile Remove="Time Units\Minute.cs" />
+  </ItemGroup>
+
 </Project>

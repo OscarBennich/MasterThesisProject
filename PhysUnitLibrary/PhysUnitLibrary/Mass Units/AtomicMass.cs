@@ -9,7 +9,7 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class AtomicMass : Mass
     {
-        public double Value { get; private set; }
+        //public double Value { get; private set; }
 
         public AtomicMass(double value)
         {

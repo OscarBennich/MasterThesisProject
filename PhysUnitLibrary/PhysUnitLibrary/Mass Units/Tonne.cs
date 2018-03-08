@@ -9,11 +9,24 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Tonne : Mass
     {
-        public double Value { get; private set; }
+        //public double Value { get; private set; }
 
         public Tonne(double value)
         {
             Value = value;
+            LengthDimension = 0;
+            TimeDimension = 0;
+            MassDimension = 1;
+        }
+
+        public Tonne(double value, double minValue, double maxValue)
+        {
+            Value = value;
+            LengthDimension = 0;
+            TimeDimension = 0;
+            MassDimension = 1;
+            MinValue = minValue;
+            MaxValue = maxValue;
         }
 
         #region Conversion Methods
@@ -27,25 +40,25 @@ namespace PhysUnitLibrary.Mass_Units
             return new Tonne(kilogram.Value / 1000); // One kg is equal to 0.001 tonnes
         }
 
-        public static implicit operator Tonne(AtomicMass atomicMass)
-        {
-            return atomicMass.Convert();
-        }
+        //public static implicit operator Tonne(AtomicMass atomicMass)
+        //{
+        //    return atomicMass.Convert();
+        //}
 
         public static implicit operator Tonne(Pound pound)
         {
             return pound.Convert();
         }
 
-        public static implicit operator Tonne(PlanckMass planckMass)
-        {
-            return planckMass.Convert();
-        }
+        //public static implicit operator Tonne(PlanckMass planckMass)
+        //{
+        //    return planckMass.Convert();
+        //}
 
-        public static implicit operator Tonne(SolarMass solarMass)
-        {
-            return solarMass.Convert();
-        }
+        //public static implicit operator Tonne(SolarMass solarMass)
+        //{
+        //    return solarMass.Convert();
+        //}
 #endregion
 
         public override string ToString()

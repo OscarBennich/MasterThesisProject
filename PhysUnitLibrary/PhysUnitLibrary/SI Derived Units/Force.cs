@@ -4,14 +4,14 @@ using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
 {
-    public class Velocity : DerivedUnits
+    public class Force : DerivedUnits
     {
-        public Velocity(double value)
+        public Force(double value)
         {
             Value = value;
             LengthDimension = 1;
-            TimeDimension = -1;
-            MassDimension = 0;
+            TimeDimension = -2;
+            MassDimension = 1;
         }
     }
 }

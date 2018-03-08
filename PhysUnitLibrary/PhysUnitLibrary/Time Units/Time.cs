@@ -12,10 +12,5 @@ namespace PhysUnitLibrary.Time_Units
     public abstract class Time : PhysicalUnit
     {
         public abstract Second Convert();
-
-        //public static Velocity operator /(Metre metre, Time time)
-        //{
-        //    return new Velocity(metre.Value / time.Convert().Value);
-        //}
     }
 }
