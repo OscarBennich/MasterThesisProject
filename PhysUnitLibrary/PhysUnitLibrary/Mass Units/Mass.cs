@@ -15,28 +15,28 @@ namespace PhysUnitLibrary
         public static Kilogram operator +(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value + secondMass.Convert().Value;
-            return createNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass, secondMass);
         }
 
         public static Kilogram operator -(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value - secondMass.Convert().Value;
-            return createNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass, secondMass);
         }
 
         public static Kilogram operator *(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value * secondMass.Convert().Value;
-            return createNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass, secondMass);
         }
 
         public static Kilogram operator /(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value / secondMass.Convert().Value;
-            return createNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass, secondMass);
         }
 
-        public static Kilogram createNewKilogram(double value, Mass firstMass, Mass secondMass)
+        public static Kilogram CreateNewKilogram(double value, Mass firstMass, Mass secondMass)
         {
             if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
             {

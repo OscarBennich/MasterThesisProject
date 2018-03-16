@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PhysUnitLibrary
 {
-    class UnderMinValueException : Exception
+    public class UnderMinValueException : Exception
     {
         public UnderMinValueException() { }
         public UnderMinValueException(string message) : base(message) { }
