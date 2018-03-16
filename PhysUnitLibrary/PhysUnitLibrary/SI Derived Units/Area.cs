@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PhysUnitLibrary.Length_Units
+namespace PhysUnitLibrary.SI_Derived_Units
 {
-    public class Area : Length
+    public class Area : DerivedUnits 
     {
         public Area(double value)
         {
