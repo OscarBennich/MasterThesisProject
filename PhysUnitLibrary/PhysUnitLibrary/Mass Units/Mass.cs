@@ -15,38 +15,38 @@ namespace PhysUnitLibrary
         public static Kilogram operator +(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value + secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
         }
 
         public static Kilogram operator -(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value - secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
         }
 
         public static Kilogram operator *(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value * secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
         }
 
         public static Kilogram operator /(Mass firstMass, Mass secondMass)
         {
             double value = firstMass.Convert().Value / secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass, secondMass);
+            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
         }
 
-        public static Kilogram CreateNewKilogram(double value, Mass firstMass, Mass secondMass)
+        public static Kilogram CreateNewKilogram(double value, Kilogram firstMass, Kilogram secondMass)
         {   
             if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
-            {
-                double newMin = (double)secondMass.MinValue;
+            {   
+                double newMin = (double)secondMass.MinValue; 
                 double newMax = (double)secondMass.MaxValue;
                 return new Kilogram(value, newMin, newMax);
             }
             else if (firstMass.MaxValue != null && secondMass.MaxValue == null) // Takes the max & min value from the second mass
             {
-                double newMin = (double)firstMass.MinValue;
+                double newMin = (double)firstMass.MinValue; 
                 double newMax = (double)firstMass.MaxValue;
                 return new Kilogram(value, newMin, newMax);
             }

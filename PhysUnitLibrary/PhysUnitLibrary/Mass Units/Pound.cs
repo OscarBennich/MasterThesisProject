@@ -9,8 +9,6 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Pound : Mass
     {
-        //public double Value { get; private set; }
-
         public Pound(double value)
         {
             Value = value;
@@ -32,12 +30,39 @@ namespace PhysUnitLibrary.Mass_Units
         #region Conversion Methods
         public override Kilogram Convert()
         {
-            return new Kilogram(this.Value * 0.45359237);
+            double conversionFactor = 0.45359237; // Kilogram is equal to  to 0.45359237lb
+            double newValue = Value * conversionFactor;
+
+            if (MaxValue != null) // The kilogram object has a range set
+            {
+                double newMinValue = (double)MinValue * conversionFactor;
+                double newMaxValue = (double)MaxValue * conversionFactor;
+
+                return new Kilogram(newValue, newMinValue, newMaxValue);
+            }
+            else
+            {
+                return new Kilogram(newValue);
+            }
+
         }
 
         public static implicit operator Pound(Kilogram kilogram)
         {
-            return new Pound(kilogram.Value * 2.20462262); // One pound is equal to 2.20462262kg
+            double conversionFactor = 2.20462262; // One pound is equal to 2.20462262kg
+            double newValue = kilogram.Value * conversionFactor;
+
+            if (kilogram.MaxValue != null) // The kilogram object has a range set
+            {                     
+                double newMinValue = (double)kilogram.MinValue * conversionFactor;
+                double newMaxValue = (double)kilogram.MaxValue * conversionFactor;
+
+                return new Pound(newValue, newMinValue, newMaxValue);
+            }
+            else
+            {
+                return new Pound(newValue);
+            }        
         }
 
         public static implicit operator Pound(Tonne tonne)
@@ -45,6 +70,12 @@ namespace PhysUnitLibrary.Mass_Units
             return tonne.Convert();
         }
         #endregion
+
+
+        public static double ConvertToKilogram(double value) // Value in pounds
+        {
+            return value * 0.45359237;
+        }
 
         public override string ToString()
         {
