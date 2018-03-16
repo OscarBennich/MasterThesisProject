@@ -37,7 +37,7 @@ namespace PhysUnitLibrary
         }
 
         public static Kilogram CreateNewKilogram(double value, Mass firstMass, Mass secondMass)
-        {
+        {   
             if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
             {
                 double newMin = (double)secondMass.MinValue;
@@ -49,6 +49,10 @@ namespace PhysUnitLibrary
                 double newMin = (double)firstMass.MinValue;
                 double newMax = (double)firstMass.MaxValue;
                 return new Kilogram(value, newMin, newMax);
+            }
+            else if(firstMass.MaxValue == null && secondMass.MaxValue == null) // None of the masses has a range set
+            {
+                return new Kilogram(value);
             }
             else // Takes the highest max value and the lowest min value from both masses 
             {

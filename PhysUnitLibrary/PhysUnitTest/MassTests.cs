@@ -70,14 +70,14 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(OverMaxValueException))]
+        //[ExpectedException(typeof(OverMaxValueException))]
         public void OverMaxAllowedRangePoundTest()
         {
             double value1 = 100;
             double value2 = 300;
 
             Kilogram kilogram1 = new Kilogram(value1);
-            Kilogram kilogram2 = new Kilogram(value2, 100, 350);
+            Kilogram kilogram2 = new Kilogram(value2);
 
             Pound pound = kilogram1 + kilogram2;
 

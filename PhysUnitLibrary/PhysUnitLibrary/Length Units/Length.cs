@@ -9,9 +9,9 @@ namespace PhysUnitLibrary.Length_Units
     /// </summary>
     public abstract class Length : PhysicalUnit
     {
-        public static Area operator *(Length firstLength, Length secondLength)
-        {
-            return new Area(firstLength.Value * secondLength.Value);
-        }
+        //public static Area operator *(Length firstLength, Length secondLength)
+        //{
+        //    return new Area(firstLength.Value * secondLength.Value);
+        //}
     }
 }
