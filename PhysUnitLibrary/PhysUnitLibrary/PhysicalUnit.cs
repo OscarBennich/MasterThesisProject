@@ -10,7 +10,7 @@ namespace PhysUnitLibrary
     public class PhysicalUnit
     {
         public double Value { get; protected set; }
-
+        
         public int LengthDimension { get; protected set; }
 
         public int TimeDimension { get; protected set; }

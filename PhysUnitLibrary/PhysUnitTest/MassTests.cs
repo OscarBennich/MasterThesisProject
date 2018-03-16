@@ -8,24 +8,61 @@ namespace PhysUnitTest
     [TestClass]
     public class MassTests
     {
-        //[TestMethod]
-        //public void ConversionFromAtomicMassToKilo()
-        //{
-        //    int value = 100;
-        //    Kilogram kilogram = new Pound(value);
-
-        //    Assert.AreEqual(expected: value * (1.660539040 * Math.Pow(10, -27)), actual: kilogram.Value);
-        //}
 
         [TestMethod]
-        public void MassAdditionExceptions()
+        public void OverMaxAllowedRangeAdditonExceptionTest()
         {
-            Kilogram kilogram = new Kilogram(100); // No range set on this
-            Kilogram kilogram2 = new Kilogram(200,10,340);
+            double value1 = 100;
+            double value2 = 300;
 
-            Kilogram kilogram3 = kilogram + kilogram2;
+            Kilogram kilogram1 = new Kilogram(value1); 
+            Kilogram kilogram2 = new Kilogram(value2, 10,340); // Lowest allowed is 100, highest is 340
+
+            Kilogram kilogram3 = kilogram1 + kilogram2;
                 
-            Assert.AreEqual(expected: 100 + 200, actual: kilogram3.Value);
+            Assert.AreEqual(expected: value1 + value2, actual: kilogram3.Value); // Should fail because of the range
+        }
+
+        [TestMethod]
+        public void UnderMinAllowedRangeSubtractionExceptionTest()
+        {
+            double value1 = 250;
+            double value2 = 300;
+
+            Kilogram kilogram1 = new Kilogram(value1); 
+            Kilogram kilogram2 = new Kilogram(value2, 100, 340); 
+
+            Kilogram kilogram3 = kilogram2 - kilogram1;
+
+            Assert.AreEqual(expected: value2 - value1, actual: kilogram3.Value); // Should fail because of the range
+        }
+
+        [TestMethod]
+        public void OverMaxAllowedRangeMultiplyExceptionTest()
+        {
+            double value1 = 100;
+            double value2 = 300;
+
+            Kilogram kilogram1 = new Kilogram(value1); 
+            Kilogram kilogram2 = new Kilogram(value2, 10, 340);
+
+            Kilogram kilogram3 = kilogram1 * kilogram2;
+
+            Assert.AreEqual(expected: value1 * value2, actual: kilogram3.Value); // Should fail because of the range
+        }
+
+        [TestMethod]
+        public void UnderMinAllowedRangeDivideExceptionTest()
+        {
+            double value1 = 100;
+            double value2 = 300;
+
+            Kilogram kilogram = new Kilogram(value1); 
+            Kilogram kilogram2 = new Kilogram(value2, 100, 340);
+
+            Kilogram kilogram3 = kilogram2 / kilogram;
+
+            Assert.AreEqual(expected: value2 / value1, actual: kilogram3.Value); // Should fail because of the range
         }
 
         //#region Conversion Tests

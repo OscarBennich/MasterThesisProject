@@ -22,10 +22,14 @@ namespace PhysUnitLibrary
         {
             if (value > maxValue)
             {
-                throw new Exception("The mass exceeds the max allowed amount");
+                throw new OverMaxValueException("The mass is over the max allowed amount");
+            }
+            else if(value < minValue)
+            {
+                throw new UnderMinValueException("The mass is under the minimum allowed amount");
             }
 
-            Value = value;
+            Value = value;  
             LengthDimension = 0;
             TimeDimension = 0;
             MassDimension = 1;
