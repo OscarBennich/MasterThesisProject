@@ -9,10 +9,12 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Tonne : Mass
     {
-        //public double Value { get; private set; }
+        public static double TonneConversionFactor = 1000; // One tonne is equal to 1000kg
 
         public Tonne(double value)
         {
+            ConversionFactor = TonneConversionFactor;
+
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
@@ -21,6 +23,8 @@ namespace PhysUnitLibrary.Mass_Units
 
         public Tonne(double value, double minValue, double maxValue)
         {
+            ConversionFactor = TonneConversionFactor;
+
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
@@ -32,17 +36,16 @@ namespace PhysUnitLibrary.Mass_Units
         #region Conversion Methods
         public override Kilogram Convert()
         {
-            double conversionFactor = 1000; // One tonne is equal to 1000kg
-            double newValue = Value * conversionFactor;
+            double newValue = Value * ConversionFactor;
 
             if (MaxValue != null) // There is a range for this object
             {
-                double newMinValue = (double)MinValue * conversionFactor;
-                double newMaxValue = (double)MaxValue * conversionFactor;
+                double newMinValue = (double)MinValue * ConversionFactor;
+                double newMaxValue = (double)MaxValue * ConversionFactor;
 
                 return new Kilogram(newValue, newMinValue, newMaxValue);
             }
-            else
+            else // If it does not
             {
                 return new Kilogram(newValue);
             }
@@ -50,17 +53,16 @@ namespace PhysUnitLibrary.Mass_Units
 
         public static implicit operator Tonne(Kilogram kilogram)
         {
-            double conversionFactor = 0.001; // One kg is equal to 0.001 tonnes
-            double newValue = kilogram.Value * conversionFactor;
+            double newValue = kilogram.Value * 1 / TonneConversionFactor;
 
             if (kilogram.MaxValue != null) // The kilogram object has a range set
             {
-                double newMinValue = (double)kilogram.MinValue * conversionFactor;
-                double newMaxValue = (double)kilogram.MaxValue * conversionFactor;
+                double newMinValue = (double)kilogram.MinValue * 1 / TonneConversionFactor;
+                double newMaxValue = (double)kilogram.MaxValue * 1 / TonneConversionFactor;
 
                 return new Tonne(newValue, newMinValue, newMaxValue);
             }
-            else
+            else // If it does not
             {
                 return new Tonne(newValue);
             }
@@ -71,11 +73,6 @@ namespace PhysUnitLibrary.Mass_Units
             return pound.Convert();
         }
         #endregion
-
-        public static double ConvertToKilogram(double value) // Value in tonnes
-        {
-            return value * 0.001;
-        }
 
         public override string ToString()
         {

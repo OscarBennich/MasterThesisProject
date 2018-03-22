@@ -9,8 +9,12 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Pound : Mass
     {
+        public static double PoundConversionFactor = 0.45359237; // 1 kilogram is equal to  to 0.45359237lb
+
         public Pound(double value)
         {
+            ConversionFactor = PoundConversionFactor;
+
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
@@ -19,10 +23,13 @@ namespace PhysUnitLibrary.Mass_Units
 
         public Pound(double value, double minValue, double maxValue)
         {
+            ConversionFactor = PoundConversionFactor;
+
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
             MassDimension = 1;
+
             MinValue = minValue;
             MaxValue = maxValue;
         }
@@ -30,36 +37,33 @@ namespace PhysUnitLibrary.Mass_Units
         #region Conversion Methods
         public override Kilogram Convert()
         {
-            double conversionFactor = 0.45359237; // Kilogram is equal to  to 0.45359237lb
-            double newValue = Value * conversionFactor;
+            double newValue = Value * ConversionFactor;
 
-            if (MaxValue != null) // The kilogram object has a range set
+            if (MaxValue != null) // There is a range for this object
             {
-                double newMinValue = (double)MinValue * conversionFactor;
-                double newMaxValue = (double)MaxValue * conversionFactor;
+                double newMinValue = (double)MinValue * ConversionFactor;
+                double newMaxValue = (double)MaxValue * ConversionFactor;
 
                 return new Kilogram(newValue, newMinValue, newMaxValue);
             }
-            else
+            else // If it does not
             {
                 return new Kilogram(newValue);
             }
-
         }
 
         public static implicit operator Pound(Kilogram kilogram)
         {
-            double conversionFactor = 2.20462262; // One pound is equal to 2.20462262kg
-            double newValue = kilogram.Value * conversionFactor;
+            double newValue = kilogram.Value * 1 / PoundConversionFactor;
 
             if (kilogram.MaxValue != null) // The kilogram object has a range set
-            {                     
-                double newMinValue = (double)kilogram.MinValue * conversionFactor;
-                double newMaxValue = (double)kilogram.MaxValue * conversionFactor;
+            {
+                double newMinValue = (double)kilogram.MinValue * 1 / PoundConversionFactor;
+                double newMaxValue = (double)kilogram.MaxValue * 1 / PoundConversionFactor;
 
                 return new Pound(newValue, newMinValue, newMaxValue);
             }
-            else
+            else // If it does not
             {
                 return new Pound(newValue);
             }        
@@ -70,12 +74,6 @@ namespace PhysUnitLibrary.Mass_Units
             return tonne.Convert();
         }
         #endregion
-
-
-        public static double ConvertToKilogram(double value) // Value in pounds
-        {
-            return value * 0.45359237;
-        }
 
         public override string ToString()
         {

@@ -8,9 +8,11 @@ namespace PhysUnitLibrary
     /// </summary>
     public abstract class Mass : PhysicalUnit
     {
+        public double ConversionFactor;
+
         // All inheriting classes must define how they are to be converted into kilogram
         // Kilogram being the basic unit of mass 
-        public abstract Kilogram Convert(); 
+        public abstract Kilogram Convert();
 
         public static Kilogram operator +(Mass firstMass, Mass secondMass)
         {
@@ -18,22 +20,70 @@ namespace PhysUnitLibrary
             return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
         }
 
+        public static Kilogram operator +(Mass firstMass, int intOperationValue)
+        {
+            double newValue = firstMass.Convert().Value + (intOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
+        }
+
+        public static Kilogram operator +(Mass firstMass, double doubleOperationValue)
+        {
+            double newValue = firstMass.Convert().Value + (doubleOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
+        }
+
         public static Kilogram operator -(Mass firstMass, Mass secondMass)
         {
-            double value = firstMass.Convert().Value - secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
+            double newValue = firstMass.Convert().Value - secondMass.Convert().Value;
+            return CreateNewKilogram(newValue, firstMass.Convert(), secondMass.Convert());
+        }
+
+        public static Kilogram operator -(Mass firstMass, int intOperationValue)
+        {
+            double newValue = firstMass.Convert().Value - (intOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
+        }
+
+        public static Kilogram operator -(Mass firstMass, double doubleOperationValue)
+        {
+            double newValue = firstMass.Convert().Value - (doubleOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
         }
 
         public static Kilogram operator *(Mass firstMass, Mass secondMass)
         {
-            double value = firstMass.Convert().Value * secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
+            double newValue = firstMass.Convert().Value * secondMass.Convert().Value;
+            return CreateNewKilogram(newValue, firstMass.Convert(), secondMass.Convert());
+        }
+
+        public static Kilogram operator *(Mass firstMass, int intOperationValue)
+        {
+            double newValue = firstMass.Convert().Value * (intOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
+        }
+
+        public static Kilogram operator *(Mass firstMass, double doubleOperationValue)
+        {
+            double newValue = firstMass.Convert().Value * (doubleOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
         }
 
         public static Kilogram operator /(Mass firstMass, Mass secondMass)
         {
-            double value = firstMass.Convert().Value / secondMass.Convert().Value;
-            return CreateNewKilogram(value, firstMass.Convert(), secondMass.Convert());
+            double newValue = firstMass.Convert().Value / secondMass.Convert().Value;
+            return CreateNewKilogram(newValue, firstMass.Convert(), secondMass.Convert());
+        }
+
+        public static Kilogram operator /(Mass firstMass, int intOperationValue)
+        {
+            double newValue = firstMass.Convert().Value / (intOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
+        }
+
+        public static Kilogram operator /(Mass firstMass, double doubleOperationValue)
+        {
+            double newValue = firstMass.Convert().Value / (doubleOperationValue * firstMass.ConversionFactor);
+            return CreateNewKilogram(newValue, firstMass.Convert());
         }
 
         public static Kilogram CreateNewKilogram(double value, Kilogram firstMass, Kilogram secondMass)
@@ -59,6 +109,21 @@ namespace PhysUnitLibrary
                 double newMin = Math.Min((double)firstMass.MinValue, (double)secondMass.MinValue);
                 double newMax = Math.Max((double)firstMass.MaxValue, (double)secondMass.MaxValue);
                 return new Kilogram(value, newMin, newMax);
+            }
+        }
+
+        // For when adding a value to an existing mass, instead of two masses together
+        public static Kilogram CreateNewKilogram(double value, Kilogram kilogram) 
+        {
+            if (kilogram.MaxValue != null)
+            {
+                double newMin = (double)kilogram.MinValue;
+                double newMax = (double)kilogram.MaxValue;
+                return new Kilogram(value, newMin, newMax);
+            }
+            else 
+            {
+                return new Kilogram(value);
             }
         }
     }

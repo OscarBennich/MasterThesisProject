@@ -69,18 +69,29 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        //[ExpectedException(typeof(OverMaxValueException))]
+        [ExpectedException(typeof(OverMaxValueException))]
         public void OverMaxAllowedRangePoundTest()
         {
             double value1 = 100;
             double value2 = 300;
 
-            Kilogram kilogram1 = new Kilogram(value1, 100, 2500);
+            Kilogram kilogram1 = new Kilogram(value1, 100, 350);
             Kilogram kilogram2 = new Kilogram(value2);
 
             Pound pound = kilogram1 + kilogram2;
 
             Assert.AreEqual(expected: (value2 + value1) * 2.20462262, actual: pound.Value); // Should fail because of the range
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(OverMaxValueException))]
+        public void OverMaxAllowedRangeAddIntToTonne()
+        {
+            Tonne tonne = new Tonne(2, 0.01, 2.8);
+
+            tonne = tonne + 5;
+
+            Assert.AreEqual(expected: 7, actual: tonne.Value); // Should fail because of the range
         }
     }
 }
