@@ -14,7 +14,7 @@ namespace PhysUnitLibrary.Length_Units
         // All inheriting classes must define how they are to be converted into Metre
         // Metre being the basic unit of Length 
         public abstract Metre Convert();
-
+            
         public static Metre operator +(Length firstLength, Length secondLength)
         {
             double value = firstLength.Convert().Value + secondLength.Convert().Value;
