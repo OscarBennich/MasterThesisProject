@@ -9,7 +9,7 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Pound : Mass
     {
-        public static double PoundConversionFactor = 0.45359237; // 1 kilogram is equal to  to 0.45359237lb
+        public static double PoundConversionFactor = 0.45359237; // 1 pound is equal to to 0.45359237kg
 
         public Pound(double value)
         {

@@ -9,19 +9,35 @@ namespace PhysUnitTest
 {   
     [TestClass]
     public class LengthTests
-    {   
-        //[TestMethod]
-        //public void AreaEquation()
-        //{
-        //    int value1 = 100;
-        //    int value2 = 150;
+    {
+        [TestMethod]
+        [ExpectedException(typeof(OverMaxValueException))]
+        public void LengthTestOverMax()
+        {
+            double value1 = 100;
+            double value2 = 300;
 
-        //    Length metre1 = new Metre(value1);
-        //    Length metre2 = new Metre(value2);
+            Metre metre1 = new Metre(value1, 100, 350);
+            Metre metre2 = new Metre(value2);
 
-        //    Area area = metre1 * metre2;
+            Kilometre kilometre = metre1 + metre2;
 
-        //    Assert.AreEqual(expected: value1 * value2, actual: area.Value);
-        //}
+            Assert.AreEqual(expected: (value2 + value1) * Kilometre.KilometreConversionFactor, actual: kilometre.Value);
+        }
+
+        [TestMethod]
+        public void LengthTestPassing()
+        {
+            double value1 = 100;
+            double value2 = 300;
+
+            Metre metre1 = new Metre(value1, 100, 600);
+            Metre metre2 = new Metre(value2);
+
+            Kilometre kilometre = metre1 + metre2;
+
+            Assert.AreEqual(expected: (value2 + value1) * 1 / Kilometre.KilometreConversionFactor, actual: kilometre.Value);
+        }
+
     }
 }

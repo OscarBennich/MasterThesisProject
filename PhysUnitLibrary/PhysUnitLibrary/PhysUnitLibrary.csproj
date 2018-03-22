@@ -28,7 +28,6 @@
     <Compile Remove="Length Units\EarthRadius.cs" />
     <Compile Remove="Length Units\Fathom.cs" />
     <Compile Remove="Length Units\Fermi.cs" />
-    <Compile Remove="Length Units\Foot.cs" />
     <Compile Remove="Length Units\HubbleLength.cs" />
     <Compile Remove="Length Units\Inch.cs" />
     <Compile Remove="Length Units\League.cs" />
