@@ -45,8 +45,7 @@ namespace PhysUnitLibrary
         {
             return new int[] { LengthDimension, MassDimension, TimeDimension };
         }
-
-        #region Operators              
+           
         public static PhysicalUnit operator *(PhysicalUnit unit1, PhysicalUnit unit2)
         {
             int newLengthDimension = unit1.LengthDimension + unit2.LengthDimension;
@@ -130,6 +129,5 @@ namespace PhysUnitLibrary
                 return new PhysicalUnit(unknownUnitValue, newLengthDimension, newTimeDimension, newMassDimension);
             }
         }
-        #endregion
     }
 }

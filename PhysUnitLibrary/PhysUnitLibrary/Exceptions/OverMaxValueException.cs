@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PhysUnitLibrary
 {
-public class OverMaxValueException : Exception
+    public class OverMaxValueException : Exception
     {
         public OverMaxValueException() { }
         public OverMaxValueException(string message) : base(message) { }

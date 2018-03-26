@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
 {
-    public class Velocity : DerivedUnits
+    public class Velocity : DerivedUnit
     {
         public Velocity(double value)
         {
@@ -12,6 +12,11 @@ namespace PhysUnitLibrary.SI_Derived_Units
             LengthDimension = 1;
             TimeDimension = -1;
             MassDimension = 0;
+        }
+
+        public override string ToString()
+        {
+            return Value + "m/s";
         }
     }
 }

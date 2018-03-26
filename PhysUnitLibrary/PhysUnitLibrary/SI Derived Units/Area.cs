@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
 {
-    public class Area : DerivedUnits 
+    public class Area : DerivedUnit 
     {
         public Area(double value)
         {

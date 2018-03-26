@@ -14,7 +14,7 @@ namespace PhysUnitLibrary
         // Each value representing the value of that dimension
         static Dictionary<int[], Type> dictionary = new Dictionary<int[], Type>(new UnitArrayComparer())
         {
-            {new int[] {1,0,0 }, typeof(Metre)},
+            {new int[] {1,0,0}, typeof(Metre)},
             {new int[] {0,1,0}, typeof(Kilogram)},
             {new int[] {0,0,1}, typeof(Second)},
             {new int[] {2,0,0}, typeof(Area)},

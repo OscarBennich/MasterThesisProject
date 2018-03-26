@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
 {
-    public class Force : DerivedUnits
+    public class Force : DerivedUnit
     {
         public Force(double value)
         {
@@ -12,6 +12,11 @@ namespace PhysUnitLibrary.SI_Derived_Units
             LengthDimension = 1;
             TimeDimension = -2;
             MassDimension = 1;
+        }
+
+        public override string ToString()
+        {
+            return Value + "N";
         }
     }
 }
