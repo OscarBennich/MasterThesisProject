@@ -13,9 +13,9 @@ namespace PhysUnitLibrary
         
         public int LengthDimension { get; protected set; }
 
-        public int TimeDimension { get; protected set; }
-
         public int MassDimension { get; protected set; }
+
+        public int TimeDimension { get; protected set; }    
 
         public double? MinValue { get; protected set; }
 
@@ -39,6 +39,11 @@ namespace PhysUnitLibrary
             MassDimension = massDimension;
             MinValue = minValue;
             MaxValue = maxValue; 
+        }
+
+        public int[] GetDimensionArray()
+        {
+            return new int[] { LengthDimension, MassDimension, TimeDimension };
         }
 
         #region Operators              
@@ -65,8 +70,6 @@ namespace PhysUnitLibrary
             }
             else
             {
-                //throw new Exception("Not a valid operation");
-
                 return new PhysicalUnit(unit1.Value * unit2.Value, newLengthDimension, newTimeDimension, newMassDimension);
             }
         }
@@ -95,8 +98,6 @@ namespace PhysUnitLibrary
             }
             else
             {
-                //throw new Exception("Not a valid operation");
-
                 return new PhysicalUnit(unit1.Value / unit2.Value, newLengthDimension, newTimeDimension, newMassDimension);
             }
         }

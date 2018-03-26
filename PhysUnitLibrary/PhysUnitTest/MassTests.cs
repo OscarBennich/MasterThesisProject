@@ -33,40 +33,10 @@ namespace PhysUnitTest
             Kilogram kilogram1 = new Kilogram(value1); 
             Kilogram kilogram2 = new Kilogram(value2, 100, 340); 
 
-            Kilogram kilogram3 = (Kilogram)(kilogram2 - kilogram1);
+            Kilogram kilogram3 = kilogram2 - kilogram1;
 
             Assert.AreEqual(expected: value2 - value1, actual: kilogram3.Value); // Should fail because of the range
         }
-
-        //[TestMethod]
-        //[ExpectedException(typeof(OverMaxValueException))]
-        //public void OverMaxAllowedRangeMultiplyExceptionTest()
-        //{
-        //    double value1 = 100;
-        //    double value2 = 300;
-
-        //    Kilogram kilogram1 = new Kilogram(value1); 
-        //    Kilogram kilogram2 = new Kilogram(value2, 10, 340);
-
-        //    Kilogram kilogram3 = kilogram1 * kilogram2;
-
-        //    Assert.AreEqual(expected: value1 * value2, actual: kilogram3.Value); // Should fail because of the range
-        //}
-
-        //[TestMethod]
-        //[ExpectedException(typeof(UnderMinValueException))]
-        //public void UnderMinAllowedRangeDivideExceptionTest()
-        //{
-        //    double value1 = 100;
-        //    double value2 = 300;
-
-        //    Kilogram kilogram1 = new Kilogram(value1); 
-        //    Kilogram kilogram2 = new Kilogram(value2, 100, 340);
-
-        //    Kilogram kilogram3 = kilogram2 / kilogram1;
-
-        //    Assert.AreEqual(expected: value2 / value1, actual: kilogram3.Value); // Should fail because of the range
-        //}
 
         [TestMethod]
         [ExpectedException(typeof(OverMaxValueException))]
@@ -83,38 +53,22 @@ namespace PhysUnitTest
             Assert.AreEqual(expected: (value2 + value1) * 2.20462262, actual: pound.Value); // Should fail because of the range
         }
 
-        [TestMethod]
-        public void TestTest()
-        {
-            double value1 = 100;
-            double value2 = 300;
+        //[TestMethod]
+        //public void OverMaxAllowedRangeAddIntToTonne()
+        //{
+        //    Tonne tonne = new Tonne(2, 0.01, 9);
 
-            Kilogram kilogram1 = new Kilogram(value1, 100, 600);
-            Pound pound1 = new Pound(value2);
+        //    try
+        //    {
+        //        tonne = (Tonne)(tonne + 5);
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Exception innerException = e.GetBaseException();
+        //        Assert.IsTrue(true);
+        //    }
 
-            Pound pound2 = new Kilogram(value1);
-             
-            Pound pound3 = kilogram1 + pound1;
-
-            Assert.AreEqual(expected: (value2 + value1) * 2.20462262, actual: pound2.Value); // Should fail because of the range
-        }
-
-        [TestMethod]
-        public void OverMaxAllowedRangeAddIntToTonne()
-        {
-            Tonne tonne = new Tonne(2, 0.01, 9);
-
-            try
-            {
-                tonne = (Tonne)(tonne + 5);
-            }
-            catch(Exception e)
-            {
-                Exception innerException = e.GetBaseException();
-                Assert.IsTrue(true);
-            }
-
-           // Assert.AreEqual(expected: 7, actual: tonne.Value); // Should fail because of the range
-        }
+        //   // Assert.AreEqual(expected: 7, actual: tonne.Value); // Should fail because of the range
+        //}
     }
 }

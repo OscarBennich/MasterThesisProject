@@ -7,7 +7,7 @@ namespace PhysUnitLibrary
     /// One of 7 physical unit dimensions
     /// </summary>
     public abstract class Mass : PhysicalUnit
-    {   
+    {
         // All inheriting classes must define how they are to be converted into kilogram
         // Kilogram being the basic unit of mass 
         public abstract Kilogram Convert();
@@ -22,7 +22,7 @@ namespace PhysUnitLibrary
 
         public static Kilogram operator -(Mass firstMass, Mass secondMass)
         {
-            double value = firstMass.Value + secondMass.Value;
+            double value = firstMass.Value - secondMass.Value;
             return CreateNewMassObject(value, firstMass, secondMass);
         }
 

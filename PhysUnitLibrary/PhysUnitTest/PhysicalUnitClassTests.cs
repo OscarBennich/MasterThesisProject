@@ -19,12 +19,12 @@ namespace PhysUnitTest
             Assert.AreEqual(expected: 1000, actual: physicalUnit2.MaxValue);
         }
 
-        [TestMethod]
-        public void KilogramTest()
-        {
-            Kilogram kilogram = new Kilogram(40);
+        //[TestMethod]
+        //public void KilogramTest()
+        //{
+        //    Kilogram kilogram = new Kilogram(40);
 
-            Assert.AreEqual(expected: 1, actual: kilogram.MassDimension);
-        }
+        //    Assert.AreEqual(expected: 1, actual: kilogram.MassDimension);
+        //}
     }
 }

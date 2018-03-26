@@ -10,14 +10,14 @@ namespace PhysUnitLibrary
     /// </summary>
     public class Kilogram : Mass
     {
-        public static double ConversionFactor = 1;
+        private static double ConversionFactor = 1;
 
         public Kilogram(double value)
         {
             Value = value;
             LengthDimension = 0;
-            TimeDimension = 0;
             MassDimension = 1;
+            TimeDimension = 0;            
         }
 
         public Kilogram(double value, double minValue, double maxValue)
@@ -31,14 +31,14 @@ namespace PhysUnitLibrary
                 throw new UnderMinValueException("The mass is under the minimum allowed amount");
             }
 
-            Value = value;  
+            Value = value;
             LengthDimension = 0;
-            TimeDimension = 0;
             MassDimension = 1;
+            TimeDimension = 0;
             MinValue = minValue;
             MaxValue = maxValue;
         }
-
+        
         #region Conversion methods 
         public override Kilogram Convert()
         {
@@ -52,12 +52,12 @@ namespace PhysUnitLibrary
 
         public static implicit operator Kilogram(Pound pound)
         {
-            return new Kilogram(pound.Value * Pound.ConversionFactor); 
+            return new Kilogram(pound.Value * pound.GetConversionFactor()); 
         }
 
         public static implicit operator Kilogram(Tonne tonne)
         {
-            return new Kilogram(tonne.Value * Tonne.ConversionFactor);
+            return new Kilogram(tonne.Value * tonne.GetConversionFactor());
         }
         #endregion
 

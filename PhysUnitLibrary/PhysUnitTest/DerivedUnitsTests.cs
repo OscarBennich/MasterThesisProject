@@ -75,27 +75,27 @@ namespace PhysUnitTest
             Assert.AreEqual(physicalUnit.TimeDimension, -5);
         }
 
-        [TestMethod]
-        public void UnknownUnitTest()
-        {
-            double value1 = 300;
+        //[TestMethod]
+        //public void UnknownUnitTest()
+        //{
+        //    double value1 = 300;
 
-            //double value2 = 100;
+        //    //double value2 = 100;
 
-            Metre metre = new Metre(value1);
-            int unknownUnitValue = 100;
+        //    Metre metre = new Metre(value1);
+        //    int unknownUnitValue = 100;
 
-            //Area area = new Area(0);
-            Velocity velocity = new Velocity(0);
+        //    //Area area = new Area(0);
+        //    Velocity velocity = new Velocity(0);
 
-            //PhysicalUnit calculatedUnit = PhysicalUnit.GetUnknownUnit(area, metre, unknownUnitValue);
-            PhysicalUnit calculatedUnit = PhysicalUnit.GetUnknownUnit(velocity, metre, unknownUnitValue);
+        //    //PhysicalUnit calculatedUnit = PhysicalUnit.GetUnknownUnit(area, metre, unknownUnitValue);
+        //    PhysicalUnit calculatedUnit = PhysicalUnit.GetUnknownUnit(velocity, metre, unknownUnitValue);
 
-            //Second second = new Second(value2);
+        //    //Second second = new Second(value2);
 
-            //PhysicalUnit x = calculatedUnit / second;
+        //    //PhysicalUnit x = calculatedUnit / second;
 
-            Assert.Fail();
-        }
+        //    Assert.Fail();
+        //}
     }
 }

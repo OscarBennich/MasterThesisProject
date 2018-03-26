@@ -9,14 +9,14 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Tonne : Mass
     {
-        public static double ConversionFactor = 1000; // One tonne is equal to 1000kg
+        private static double ConversionFactor = 1000; // One tonne is equal to 1000kg
 
         public Tonne(double value)
         {   
             Value = value;
             LengthDimension = 0;
-            TimeDimension = 0;
             MassDimension = 1;
+            TimeDimension = 0;
         }
 
         public Tonne(double value, double minValue, double maxValue)
@@ -32,8 +32,8 @@ namespace PhysUnitLibrary.Mass_Units
 
             Value = value;
             LengthDimension = 0;
-            TimeDimension = 0;
             MassDimension = 1;
+            TimeDimension = 0;
             MinValue = minValue;
             MaxValue = maxValue;
         }

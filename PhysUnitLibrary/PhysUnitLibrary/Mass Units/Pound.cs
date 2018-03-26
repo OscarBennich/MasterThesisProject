@@ -14,9 +14,6 @@ namespace PhysUnitLibrary.Mass_Units
         public Pound(double value)
         {
             Value = value;
-            LengthDimension = 0;
-            TimeDimension = 0;
-            MassDimension = 1;
         }
 
         public Pound(double value, double minValue, double maxValue)
@@ -32,9 +29,8 @@ namespace PhysUnitLibrary.Mass_Units
 
             Value = value;
             LengthDimension = 0;
-            TimeDimension = 0;
             MassDimension = 1;
-
+            TimeDimension = 0;
             MinValue = minValue;
             MaxValue = maxValue;
         }
