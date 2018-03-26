@@ -6,13 +6,12 @@ namespace PhysUnitLibrary.Length_Units
 {
     public class Kilometre : Length
     {
-        public static double KilometreConversionFactor = 1000; // 1 kilometre is equal to 1000m
+        private static double ConversionFactor = 1000; // 1 kilometre is equal to 1000m
 
         public Kilometre(double value)
         {
-            ConversionFactor = KilometreConversionFactor;
-
             Value = value;
+
             LengthDimension = 1;
             TimeDimension = 0;
             MassDimension = 0;
@@ -20,9 +19,8 @@ namespace PhysUnitLibrary.Length_Units
 
         public Kilometre(double value, double minValue, double maxValue)
         {
-            ConversionFactor = KilometreConversionFactor;
-
             Value = value;
+
             LengthDimension = 1;
             TimeDimension = 0;
             MassDimension = 0;
@@ -49,14 +47,19 @@ namespace PhysUnitLibrary.Length_Units
             }
         }
 
+        public override double GetConversionFactor()
+        {
+            return ConversionFactor;
+        }
+
         public static implicit operator Kilometre(Metre Metre)
         {
-            double newValue = Metre.Value * 1 / KilometreConversionFactor;
+            double newValue = Metre.Value * 1 / ConversionFactor;
 
             if (Metre.MaxValue != null) // The Metre object has a range set
             {
-                double newMinValue = (double)Metre.MinValue * 1 / KilometreConversionFactor;
-                double newMaxValue = (double)Metre.MaxValue * 1 / KilometreConversionFactor;
+                double newMinValue = (double)Metre.MinValue * 1 / ConversionFactor;
+                double newMaxValue = (double)Metre.MaxValue * 1 / ConversionFactor;
 
                 return new Kilometre(newValue, newMinValue, newMaxValue);
             }

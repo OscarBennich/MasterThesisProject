@@ -22,7 +22,7 @@ namespace PhysUnitTest
 
             Kilometre kilometre = metre1 + metre2;
 
-            Assert.AreEqual(expected: (value2 + value1) * Kilometre.KilometreConversionFactor, actual: kilometre.Value);
+            Assert.AreEqual(expected: (value2 + value1) * kilometre.GetConversionFactor(), actual: kilometre.Value);
         }
 
         [TestMethod]
@@ -36,7 +36,7 @@ namespace PhysUnitTest
 
             Kilometre kilometre = metre1 + metre2;
 
-            Assert.AreEqual(expected: (value2 + value1) * 1 / Kilometre.KilometreConversionFactor, actual: kilometre.Value);
+            Assert.AreEqual(expected: (value2 + value1) * 1 / kilometre.GetConversionFactor(), actual: kilometre.Value);
         }
     }
 }

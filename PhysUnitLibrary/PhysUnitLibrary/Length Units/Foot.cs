@@ -6,13 +6,12 @@ namespace PhysUnitLibrary.Length_Units
 {
     public class Foot : Length
     {
-        public static double FootConversionFactor = 0.3048; // 1 Foot is equal to 0.3048m
+        private static double ConversionFactor = 1000; // 1 Foot is equal to 0.3048m
 
         public Foot(double value)
         {
-            ConversionFactor = FootConversionFactor;
-
             Value = value;
+
             LengthDimension = 1;
             TimeDimension = 0;
             MassDimension = 0;
@@ -20,9 +19,8 @@ namespace PhysUnitLibrary.Length_Units
 
         public Foot(double value, double minValue, double maxValue)
         {
-            ConversionFactor = FootConversionFactor;
-
             Value = value;
+
             LengthDimension = 1;
             TimeDimension = 0;
             MassDimension = 0;
@@ -49,14 +47,19 @@ namespace PhysUnitLibrary.Length_Units
             }
         }
 
+        public override double GetConversionFactor()
+        {
+            return ConversionFactor;
+        }
+
         public static implicit operator Foot(Metre Metre)
         {
-            double newValue = Metre.Value * 1 / FootConversionFactor;
+            double newValue = Metre.Value * 1 / ConversionFactor;
 
             if (Metre.MaxValue != null) // The Metre object has a range set
             {
-                double newMinValue = (double)Metre.MinValue * 1 / FootConversionFactor;
-                double newMaxValue = (double)Metre.MaxValue * 1 / FootConversionFactor;
+                double newMinValue = (double)Metre.MinValue * 1 / ConversionFactor;
+                double newMaxValue = (double)Metre.MaxValue * 1 / ConversionFactor;
 
                 return new Foot(newValue, newMinValue, newMaxValue);
             }
