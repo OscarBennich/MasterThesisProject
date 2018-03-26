@@ -19,7 +19,8 @@ namespace PhysUnitLibrary
             return true;
         }
 
-        public int GetHashCode(int[] obj) // Taken directly from https://stackoverflow.com/questions/14663168/an-integer-array-as-a-key-for-dictionary 
+        // This hash function is taken from https://stackoverflow.com/questions/14663168/an-integer-array-as-a-key-for-dictionary 
+        public int GetHashCode(int[] obj) 
         {
             int result = 17;
             for (int i = 0; i < obj.Length; i++)

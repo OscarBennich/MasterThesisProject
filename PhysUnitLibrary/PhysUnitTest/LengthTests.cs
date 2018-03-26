@@ -38,6 +38,5 @@ namespace PhysUnitTest
 
             Assert.AreEqual(expected: (value2 + value1) * 1 / Kilometre.KilometreConversionFactor, actual: kilometre.Value);
         }
-
     }
 }

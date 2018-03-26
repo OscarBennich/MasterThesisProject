@@ -13,28 +13,89 @@ namespace PhysUnitTest
     public class DerivedUnitsTests
     {
         [TestMethod]
-        public void VelocityEquation()
+        public void AreaTest()
         {
-            int value1 = 100;
-            int value2 = 100;
+            double value1 = 100;
+            double value2 = 300;
 
-            PhysicalUnit second = new Second(value1);
-            PhysicalUnit metre = new Metre(value2);
+            Metre metre1 = new Metre(value1, 100, 600);
+            Metre metre2 = new Metre(value2);
 
-            Velocity velocity = metre / second;
+            PhysicalUnit physicalUnit = metre1 * metre2;
 
-            Assert.AreEqual(expected: value1 / value2, actual: velocity.Value);
+            bool isArea = physicalUnit.GetType() == typeof(Area);
+
+            Assert.IsTrue(isArea);
         }
 
         [TestMethod]
-        public void ForceTest()
+        public void VelocityTest()
         {
-            PhysicalUnit acceleration = new Acceleration(20); 
-            PhysicalUnit kilogram = new Kilogram(200);
+            double value1 = 300;
+            double value2 = 100;
 
-            Force force = acceleration * kilogram; 
+            Metre metre = new Metre(value1);
+            Second second = new Second(value2);
 
-            Assert.AreEqual(expected: 20*200, actual: force.Value);
+            PhysicalUnit physicalUnit = metre / second;
+
+            bool isVelocity = physicalUnit.GetType() == typeof(Velocity);
+
+            Assert.IsTrue(isVelocity);
+        }
+
+        [TestMethod]
+        public void AccelerationTest()
+        {
+            double value1 = 300;
+            double value2 = 100;
+
+            Metre metre = new Metre(value1);
+            Second second = new Second(value2);
+
+            PhysicalUnit physicalUnit1 = second * second;
+            PhysicalUnit physicalUnit2 = metre / (second * second);
+
+            bool isAcceleration = physicalUnit2.GetType() == typeof(Acceleration);
+
+            Assert.IsTrue(isAcceleration);
+        }
+
+        [TestMethod]
+        public void RandomUnitTest()
+        {
+            double value1 = 300;
+            double value2 = 100;
+
+            Metre metre = new Metre(value1);
+            Second second = new Second(value2);
+
+            PhysicalUnit physicalUnit = metre / (second * second * second * second * second);
+
+            Assert.AreEqual(physicalUnit.TimeDimension, -5);
+        }
+
+        [TestMethod]
+        public void UnknownUnitTest()
+        {
+            double value1 = 300;
+
+            //double value2 = 100;
+
+            Metre metre = new Metre(value1);
+            int unknownUnitValue = 100;
+
+            //Area area = new Area(0);
+            Velocity velocity = new Velocity(0);
+
+            //PhysicalUnit calculatedUnit = PhysicalUnit.GetUnknownUnit(area, metre, unknownUnitValue);
+            PhysicalUnit calculatedUnit = PhysicalUnit.GetUnknownUnit(velocity, metre, unknownUnitValue);
+
+            //Second second = new Second(value2);
+
+            //PhysicalUnit x = calculatedUnit / second;
+
+            Assert.Fail();
         }
     }
 }

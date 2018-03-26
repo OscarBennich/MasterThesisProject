@@ -53,11 +53,11 @@ namespace PhysUnitLibrary.Time_Units
             return CreateNewSecond(newValue, firstTime.Convert());
         }
 
-        public static Second operator *(Time firstTime, Time secondTime)
-        {
-            double newValue = firstTime.Convert().Value * secondTime.Convert().Value;
-            return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
-        }
+        //public static Second operator *(Time firstTime, Time secondTime)
+        //{
+        //    double newValue = firstTime.Convert().Value * secondTime.Convert().Value;
+        //    return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
+        //}
 
         public static Second operator *(Time firstTime, int intOperationValue)
         {
@@ -71,11 +71,11 @@ namespace PhysUnitLibrary.Time_Units
             return CreateNewSecond(newValue, firstTime.Convert());
         }
 
-        public static Second operator /(Time firstTime, Time secondTime)
-        {
-            double newValue = firstTime.Convert().Value / secondTime.Convert().Value;
-            return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
-        }
+        //public static Second operator /(Time firstTime, Time secondTime)
+        //{
+        //    double newValue = firstTime.Convert().Value / secondTime.Convert().Value;
+        //    return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
+        //}
 
         public static Second operator /(Time firstTime, int intOperationValue)
         {

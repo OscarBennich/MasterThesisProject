@@ -51,11 +51,11 @@ namespace PhysUnitLibrary.Length_Units
             return CreateNewMetre(newValue, firstLength.Convert());
         }
 
-        public static Metre operator *(Length firstLength, Length secondLength)
-        {
-            double newValue = firstLength.Convert().Value * secondLength.Convert().Value;
-            return CreateNewMetre(newValue, firstLength.Convert(), secondLength.Convert());
-        }
+        //public static Metre operator *(Length firstLength, Length secondLength)
+        //{
+        //    double newValue = firstLength.Convert().Value * secondLength.Convert().Value;
+        //    return CreateNewMetre(newValue, firstLength.Convert(), secondLength.Convert());
+        //}
 
         public static Metre operator *(Length firstLength, int intOperationValue)
         {
@@ -69,11 +69,11 @@ namespace PhysUnitLibrary.Length_Units
             return CreateNewMetre(newValue, firstLength.Convert());
         }
 
-        public static Metre operator /(Length firstLength, Length secondLength)
-        {
-            double newValue = firstLength.Convert().Value / secondLength.Convert().Value;
-            return CreateNewMetre(newValue, firstLength.Convert(), secondLength.Convert());
-        }
+        //public static Metre operator /(Length firstLength, Length secondLength)
+        //{
+        //    double newValue = firstLength.Convert().Value / secondLength.Convert().Value;
+        //    return CreateNewMetre(newValue, firstLength.Convert(), secondLength.Convert());
+        //}
 
         public static Metre operator /(Length firstLength, int intOperationValue)
         {

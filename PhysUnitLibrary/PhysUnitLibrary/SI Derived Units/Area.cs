@@ -23,5 +23,10 @@ namespace PhysUnitLibrary.SI_Derived_Units
             MinValue = minValue;
             MaxValue = maxValue;
         }
+
+        public override string ToString()
+        {
+            return Value + "m2";
+        }
     }
 }

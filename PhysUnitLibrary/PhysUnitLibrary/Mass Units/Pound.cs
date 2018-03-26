@@ -23,6 +23,15 @@ namespace PhysUnitLibrary.Mass_Units
 
         public Pound(double value, double minValue, double maxValue)
         {
+            if (value > maxValue)
+            {
+                throw new OverMaxValueException("The mass is over the max allowed amount");
+            }
+            else if (value < minValue)
+            {
+                throw new UnderMinValueException("The mass is under the minimum allowed amount");
+            }
+
             ConversionFactor = PoundConversionFactor;
 
             Value = value;

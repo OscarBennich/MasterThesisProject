@@ -21,11 +21,7 @@ namespace PhysUnitLibrary
 
         public double? MaxValue { get; protected set; }
 
-        // Don't know about this, doing it for now
-        public PhysicalUnit()
-        {
-
-        }
+        public PhysicalUnit() { }
 
         public PhysicalUnit(double value, int lengthDimension, int timeDimension, int massDimension)
         {
@@ -45,44 +41,94 @@ namespace PhysUnitLibrary
             MaxValue = maxValue; 
         }
 
-        #region Operators
-        //early version, length in meters, time in seconds ONLY, should be for all kinds of lengths and all kinds of times
-        public static Velocity operator /(PhysicalUnit unit1, PhysicalUnit unit2)
+        #region Operators              
+        public static PhysicalUnit operator *(PhysicalUnit unit1, PhysicalUnit unit2)
         {
-            if (unit1.GetType() == typeof(Metre) && unit2.GetType() == typeof(Second))
+            int newLengthDimension = unit1.LengthDimension + unit2.LengthDimension;
+            int newMassDimension = unit1.MassDimension + unit2.MassDimension;
+            int newTimeDimension = unit1.TimeDimension + unit2.TimeDimension;
+
+            int[] dimensionArray = new int[]
             {
-                return new Velocity(unit1.Value / unit2.Value);
+                newLengthDimension,
+                newMassDimension,
+                newTimeDimension,
+            };
+
+            if(AllowedUnitsDictionary.GetUnit(dimensionArray) != null) // The operation is allowed
+            {   
+                Type physicalUnitType = AllowedUnitsDictionary.GetUnit(dimensionArray);
+                double unitValue = unit1.Value * unit2.Value;
+                PhysicalUnit physicalUnit = (PhysicalUnit)Activator.CreateInstance(physicalUnitType, new Object[] { unitValue }); // See https://stackoverflow.com/questions/752/get-a-new-object-instance-from-a-type
+
+                return physicalUnit;
             }
             else
             {
-                return null;
+                //throw new Exception("Not a valid operation");
+
+                return new PhysicalUnit(unit1.Value * unit2.Value, newLengthDimension, newTimeDimension, newMassDimension);
             }
         }
-        
-        public static Force operator *(PhysicalUnit unit1, PhysicalUnit unit2)
+
+        public static PhysicalUnit operator /(PhysicalUnit unit1, PhysicalUnit unit2)
         {
-            if (unit1.GetType() == typeof(Kilogram) && unit2.GetType() == typeof(Acceleration) 
-                || 
-                unit1.GetType() == typeof(Acceleration) && unit2.GetType() == typeof(Kilogram))
+            int newLengthDimension = unit1.LengthDimension - unit2.LengthDimension;
+            int newMassDimension = unit1.MassDimension - unit2.MassDimension;
+            int newTimeDimension = unit1.TimeDimension - unit2.TimeDimension;
+            
+            int[] dimensionArray = new int[]
             {
-                return new Force(unit1.Value * unit2.Value);
+                newLengthDimension,
+                newMassDimension,
+                newTimeDimension,
+            };
+
+            if (AllowedUnitsDictionary.GetUnit(dimensionArray) != null) // The operation is allowed
+            {
+                Type physicalUnitType = AllowedUnitsDictionary.GetUnit(dimensionArray);
+
+                double unitValue = unit1.Value / unit2.Value;
+                PhysicalUnit physicalUnit = (PhysicalUnit)Activator.CreateInstance(physicalUnitType, new Object[] { unitValue });
+
+                return physicalUnit;
             }
             else
             {
-                return null;
+                //throw new Exception("Not a valid operation");
+
+                return new PhysicalUnit(unit1.Value / unit2.Value, newLengthDimension, newTimeDimension, newMassDimension);
             }
         }
 
-        //public static PhysicalUnit operator /(PhysicalUnit unit1, PhysicalUnit unit2)
-        //{
+        // Not sure how to do this in a better way (for now)
+        public static PhysicalUnit GetUnknownUnit(PhysicalUnit result, PhysicalUnit knownUnit, int unknownUnitValue)
+        {
+            int newLengthDimension = result.LengthDimension - knownUnit.LengthDimension;
+            int newMassDimension = result.MassDimension - knownUnit.MassDimension;
+            int newTimeDimension = result.TimeDimension - knownUnit.TimeDimension;
 
-        //}
+            int[] dimensionArray = new int[]
+            {
+                newLengthDimension,
+                newMassDimension,
+                newTimeDimension,
+            }; 
 
-        //public static PhysicalUnit operator +(PhysicalUnit unit1, PhysicalUnit unit2)
-        //{
+            if (AllowedUnitsDictionary.GetUnit(dimensionArray) != null) // Valid unit
+            {
+                Type physicalUnitType = AllowedUnitsDictionary.GetUnit(dimensionArray);
 
-        //}
+                double unitValue = unknownUnitValue;
+                PhysicalUnit physicalUnit = (PhysicalUnit)Activator.CreateInstance(physicalUnitType, new Object[] { unitValue });
 
+                return physicalUnit;
+            }
+            else
+            {
+                return new PhysicalUnit(unknownUnitValue, newLengthDimension, newTimeDimension, newMassDimension);
+            }
+        }
         #endregion
     }
 }

@@ -12,7 +12,7 @@ namespace PhysUnitLibrary.Mass_Units
         public static double TonneConversionFactor = 1000; // One tonne is equal to 1000kg
 
         public Tonne(double value)
-        {
+        {   
             ConversionFactor = TonneConversionFactor;
 
             Value = value;
@@ -23,6 +23,15 @@ namespace PhysUnitLibrary.Mass_Units
 
         public Tonne(double value, double minValue, double maxValue)
         {
+            if (value > maxValue)
+            {
+                throw new OverMaxValueException("The mass is over the max allowed amount");
+            }
+            else if (value < minValue)
+            {
+                throw new UnderMinValueException("The mass is under the minimum allowed amount");
+            }
+
             ConversionFactor = TonneConversionFactor;
 
             Value = value;
