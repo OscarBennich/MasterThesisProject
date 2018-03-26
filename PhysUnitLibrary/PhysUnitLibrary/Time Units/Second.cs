@@ -6,9 +6,10 @@ namespace PhysUnitLibrary.Time_Units
 {
     public class Second : Time
     {
+        public static double ConversionFactor = 1;
+
         public Second(double value)
         {
-            ConversionFactor = 1;
             Value = value;
             LengthDimension = 0;
             TimeDimension = 1;
@@ -26,11 +27,12 @@ namespace PhysUnitLibrary.Time_Units
                 throw new UnderMinValueException("The time is under the minimum allowed amount");
             }
 
-            ConversionFactor = 1;
             Value = value;
+
             LengthDimension = 0;
             TimeDimension = 1;
             MassDimension = 0;
+
             MinValue = minValue;
             MaxValue = maxValue;
         }
@@ -41,14 +43,19 @@ namespace PhysUnitLibrary.Time_Units
             return this;
         }
 
+        public override double GetConversionFactor()
+        {
+            return ConversionFactor;
+        }
+
         public static implicit operator Second(Hour hour)
         {
-            return new Second(hour.Value * Hour.HourConversionFactor);
+            return new Second(hour.Value * hour.GetConversionFactor());
         }
 
         public static implicit operator Second(Minute minute)
         {
-            return new Second(minute.Value * Minute.MinuteConversionFactor);
+            return new Second(minute.Value * minute.GetConversionFactor());
         }
         #endregion
 

@@ -6,13 +6,12 @@ namespace PhysUnitLibrary.Time_Units
 {
     public class Minute : Time 
     {
-        public static double MinuteConversionFactor = 60; // 1 Minute is equal to 60sec
+        private static double ConversionFactor = 60; // 1 Minute is equal to 60sec
 
         public Minute(double value)
         {
-            ConversionFactor = MinuteConversionFactor;
-
             Value = value;
+
             LengthDimension = 0;
             TimeDimension = 1;
             MassDimension = 0;
@@ -20,9 +19,17 @@ namespace PhysUnitLibrary.Time_Units
 
         public Minute(double value, double minValue, double maxValue)
         {
-            ConversionFactor = MinuteConversionFactor;
+            if (value > maxValue)
+            {
+                throw new OverMaxValueException("The time is over the max allowed amount");
+            }
+            else if (value < minValue)
+            {
+                throw new UnderMinValueException("The time is under the minimum allowed amount");
+            }
 
             Value = value;
+
             LengthDimension = 0;
             TimeDimension = 1;
             MassDimension = 0;
@@ -49,14 +56,19 @@ namespace PhysUnitLibrary.Time_Units
             }
         }
 
+        public override double GetConversionFactor()
+        {
+            return ConversionFactor;
+        }
+
         public static implicit operator Minute(Second Second)
         {
-            double newValue = Second.Value * 1 / MinuteConversionFactor;
+            double newValue = Second.Value * 1 / ConversionFactor;
 
             if (Second.MaxValue != null) // The Second object has a range set
             {
-                double newMinValue = (double)Second.MinValue * 1 / MinuteConversionFactor;
-                double newMaxValue = (double)Second.MaxValue * 1 / MinuteConversionFactor;
+                double newMinValue = (double)Second.MinValue * 1 / ConversionFactor;
+                double newMaxValue = (double)Second.MaxValue * 1 / ConversionFactor;
 
                 return new Minute(newValue, newMinValue, newMaxValue);
             }

@@ -11,122 +11,103 @@ namespace PhysUnitLibrary.Time_Units
     /// </summary>
     public abstract class Time : PhysicalUnit
     {
-        public double ConversionFactor;
-
         // All inheriting classes must define how they are to be converted into Second
         // Second being the basic unit of Time 
         public abstract Second Convert();
 
+        public abstract double GetConversionFactor();
+
         public static Second operator +(Time firstTime, Time secondTime)
         {
             double value = firstTime.Convert().Value + secondTime.Convert().Value;
-            return CreateNewSecond(value, firstTime.Convert(), secondTime.Convert());
-        }
-
-        public static Second operator +(Time firstTime, int intOperationValue)
-        {
-            double newValue = firstTime.Convert().Value + (intOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
-        }
-
-        public static Second operator +(Time firstTime, double doubleOperationValue)
-        {
-            double newValue = firstTime.Convert().Value + (doubleOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
+            return CreateNewTimeObject(value, firstTime.Convert(), secondTime.Convert());
         }
 
         public static Second operator -(Time firstTime, Time secondTime)
         {
             double newValue = firstTime.Convert().Value - secondTime.Convert().Value;
-            return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
+            return CreateNewTimeObject(newValue, firstTime.Convert(), secondTime.Convert());
         }
 
-        public static Second operator -(Time firstTime, int intOperationValue)
+        public static Second operator +(Time time, double operationValue)
         {
-            double newValue = firstTime.Convert().Value - (intOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
+            double newValue = time.Value + operationValue;
+
+            if (time.MaxValue != null)
+            {
+                return new Second(newValue, (double)time.MinValue, (double)time.MaxValue);
+            }
+            else
+            {
+                return new Second(newValue);
+            }
         }
 
-        public static Second operator -(Time firstTime, double doubleOperationValue)
+        public static Second operator -(Time time, double operationValue)
         {
-            double newValue = firstTime.Convert().Value - (doubleOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
+            double newValue = time.Value - operationValue;
+
+            if (time.MaxValue != null)
+            {
+                return new Second(newValue, (double)time.MinValue, (double)time.MaxValue);
+            }
+            else
+            {
+                return new Second(newValue);
+            }
         }
 
-        //public static Second operator *(Time firstTime, Time secondTime)
-        //{
-        //    double newValue = firstTime.Convert().Value * secondTime.Convert().Value;
-        //    return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
-        //}
-
-        public static Second operator *(Time firstTime, int intOperationValue)
+        public static Second operator *(Time time, double operationValue)
         {
-            double newValue = firstTime.Convert().Value * (intOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
+            double newValue = time.Value * operationValue;
+
+            if (time.MaxValue != null)
+            {
+                return new Second(newValue, (double)time.MinValue, (double)time.MaxValue);
+            }
+            else
+            {
+                return new Second(newValue);
+            }
         }
 
-        public static Second operator *(Time firstTime, double doubleOperationValue)
+        public static Second operator /(Time time, double operationValue)
         {
-            double newValue = firstTime.Convert().Value * (doubleOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
+            double newValue = time.Value / operationValue;
+
+            if (time.MaxValue != null)
+            {
+                return new Second(newValue, (double)time.MinValue, (double)time.MaxValue);
+            }
+            else
+            {
+                return new Second(newValue);
+            }
         }
 
-        //public static Second operator /(Time firstTime, Time secondTime)
-        //{
-        //    double newValue = firstTime.Convert().Value / secondTime.Convert().Value;
-        //    return CreateNewSecond(newValue, firstTime.Convert(), secondTime.Convert());
-        //}
-
-        public static Second operator /(Time firstTime, int intOperationValue)
-        {
-            double newValue = firstTime.Convert().Value / (intOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
-        }
-
-        public static Second operator /(Time firstTime, double doubleOperationValue)
-        {
-            double newValue = firstTime.Convert().Value / (doubleOperationValue * firstTime.ConversionFactor);
-            return CreateNewSecond(newValue, firstTime.Convert());
-        }
-
-        public static Second CreateNewSecond(double value, Second firstTime, Second secondTime)
+        public static Second CreateNewTimeObject(double newValue, Second firstTime, Second secondTime)
         {
             if (firstTime.MaxValue == null && secondTime.MaxValue != null) // Takes the max & min value from the first Time
             {
                 double newMin = (double)secondTime.MinValue;
                 double newMax = (double)secondTime.MaxValue;
-                return new Second(value, newMin, newMax);
+                return new Second(newValue, newMin, newMax);
             }
             else if (firstTime.MaxValue != null && secondTime.MaxValue == null) // Takes the max & min value from the second Time
             {
                 double newMin = (double)firstTime.MinValue;
                 double newMax = (double)firstTime.MaxValue;
-                return new Second(value, newMin, newMax);
+                return new Second(newValue, newMin, newMax);
             }
-            else if (firstTime.MaxValue == null && secondTime.MaxValue == null) // None of the Timees has a range set
-            {
-                return new Second(value);
-            }
-            else // Takes the highest max value and the lowest min value from both Timees 
+            else if (firstTime.MaxValue != null && secondTime.MaxValue != null) // Takes the highest max value and the lowest min value from both times
             {
                 double newMin = Math.Min((double)firstTime.MinValue, (double)secondTime.MinValue);
                 double newMax = Math.Max((double)firstTime.MaxValue, (double)secondTime.MaxValue);
-                return new Second(value, newMin, newMax);
+                return new Second(newValue, newMin, newMax);
             }
-        }
-
-        // For when adding a value to an existing Time, instead of two Timees together
-        public static Second CreateNewSecond(double value, Second Second)
-        {
-            if (Second.MaxValue != null)
+            else // None of the times has a range set
             {
-                double newMin = (double)Second.MinValue;
-                double newMax = (double)Second.MaxValue;
-                return new Second(value, newMin, newMax);
-            }
-            else
-            {
-                return new Second(value);
+                return new Second(newValue);
             }
         }
     }

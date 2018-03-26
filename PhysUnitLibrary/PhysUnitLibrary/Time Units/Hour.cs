@@ -6,12 +6,10 @@ namespace PhysUnitLibrary.Time_Units
 {
     public class Hour : Time
     {
-        public static double HourConversionFactor = 3600; // 1 Hour is equal to 3600sec
+        private static double ConversionFactor = 3600; // 1 Hour is equal to 3600sec
 
         public Hour(double value)
         {
-            ConversionFactor = HourConversionFactor;
-
             Value = value;
             LengthDimension = 0;
             TimeDimension = 1;
@@ -20,9 +18,17 @@ namespace PhysUnitLibrary.Time_Units
 
         public Hour(double value, double minValue, double maxValue)
         {
-            ConversionFactor = HourConversionFactor;
+            if (value > maxValue)
+            {
+                throw new OverMaxValueException("The time is over the max allowed amount");
+            }
+            else if (value < minValue)
+            {
+                throw new UnderMinValueException("The time is under the minimum allowed amount");
+            }
 
             Value = value;
+
             LengthDimension = 0;
             TimeDimension = 1;
             MassDimension = 0;
@@ -49,14 +55,19 @@ namespace PhysUnitLibrary.Time_Units
             }
         }
 
+        public override double GetConversionFactor()
+        {
+            return ConversionFactor;
+        }
+
         public static implicit operator Hour(Second Second)
         {
-            double newValue = Second.Value * 1 / HourConversionFactor;
+            double newValue = Second.Value * 1 / ConversionFactor;
 
             if (Second.MaxValue != null) // The Second object has a range set
             {
-                double newMinValue = (double)Second.MinValue * 1 / HourConversionFactor;
-                double newMaxValue = (double)Second.MaxValue * 1 / HourConversionFactor;
+                double newMinValue = (double)Second.MinValue * 1 / ConversionFactor;
+                double newMaxValue = (double)Second.MaxValue * 1 / ConversionFactor;
 
                 return new Hour(newValue, newMinValue, newMaxValue);
             }

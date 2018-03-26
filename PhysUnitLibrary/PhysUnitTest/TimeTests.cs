@@ -22,7 +22,7 @@ namespace PhysUnitTest
 
             Minute minute = second1 + second2;
 
-            Assert.AreEqual(expected: (value2 + value1) * Minute.MinuteConversionFactor, actual: minute.Value);
+            Assert.AreEqual(expected: (value2 + value1) * minute.GetConversionFactor(), actual: minute.Value);
         }
 
         [TestMethod]
@@ -36,7 +36,7 @@ namespace PhysUnitTest
 
             Minute minute = second1 + second2;
 
-            Assert.AreEqual(expected: (value2 + value1) * 1 / Minute.MinuteConversionFactor, actual: minute.Value);
+            Assert.AreEqual(expected: (value2 + value1) * 1 / minute.GetConversionFactor(), actual: minute.Value);
         }
     }
 }
