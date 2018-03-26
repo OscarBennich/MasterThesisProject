@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
 {
+    /// <summary>
+    /// Velocity (m/s) - Derived from length and time
+    /// </summary>
     public class Velocity : DerivedUnit
     {
         public Velocity(double value)

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
-{
+{   
+    /// <summary>
+    /// Area (m2) - Derived from length
+    /// </summary>
     public class Area : DerivedUnit 
     {
         public Area(double value)

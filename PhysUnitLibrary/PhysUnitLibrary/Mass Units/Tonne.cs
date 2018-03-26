@@ -5,11 +5,11 @@ using System.Text;
 namespace PhysUnitLibrary.Mass_Units
 {
     /// <summary>
-    /// Unit of mass - Equal to 1000kg
+    /// Tonne (t) - Equal to 1000kg
     /// </summary>
     public class Tonne : Mass
     {
-        private static double ConversionFactor = 1000; // One tonne is equal to 1000kg
+        private static double ConversionFactor = 1000; 
 
         public Tonne(double value)
         {   

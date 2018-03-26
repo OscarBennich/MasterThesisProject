@@ -1,4 +1,5 @@
-﻿using PhysUnitLibrary.Length_Units;
+﻿using PhysUnitLibrary.Exceptions;
+using PhysUnitLibrary.Length_Units;
 using PhysUnitLibrary.Time_Units;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace PhysUnitLibrary.SI_Derived_Units
             }
             else
             {
-                throw new InvalidOperationException("This operation is not allowed"); 
+                throw new InvalidUnitOperationException("This operation is not allowed"); 
             }
         }
 
@@ -37,7 +38,7 @@ namespace PhysUnitLibrary.SI_Derived_Units
             }
             else
             {
-                throw new InvalidOperationException("This operation is not allowed");
+                throw new InvalidUnitOperationException("This operation is not allowed");
             }
         }
     }

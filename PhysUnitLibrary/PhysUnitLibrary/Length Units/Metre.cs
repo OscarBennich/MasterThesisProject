@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.Length_Units
 {
+    /// <summary>
+    /// Metre (m) - Base unit of length
+    /// </summary>
     public class Metre : Length
     {
         private static double ConversionFactor = 1;

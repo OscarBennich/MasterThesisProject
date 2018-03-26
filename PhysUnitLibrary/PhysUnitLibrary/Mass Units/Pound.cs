@@ -5,11 +5,11 @@ using System.Text;
 namespace PhysUnitLibrary.Mass_Units
 {
     /// <summary>
-    /// Unit of mass - Equal to 0.45359237kg
+    /// Pound (lb) - Equal to 0.45359237kg
     /// </summary>
     public class Pound : Mass
     {
-        public static double ConversionFactor = 0.45359237; // 1 pound is equal to to 0.45359237kg
+        public static double ConversionFactor = 0.45359237; 
 
         public Pound(double value)
         {

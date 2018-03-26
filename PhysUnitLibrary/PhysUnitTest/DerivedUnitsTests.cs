@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysUnitLibrary;
+using PhysUnitLibrary.Exceptions;
 using PhysUnitLibrary.Length_Units;
 using PhysUnitLibrary.SI_Derived_Units;
 using PhysUnitLibrary.Time_Units;
@@ -115,7 +116,7 @@ namespace PhysUnitTest
         }
 
         [TestMethod]
-        public void TestTest2()
+        public void AccelerationMultiplicationTest()
         {
             double value1 = 100;
             double value2 = 200;
@@ -134,8 +135,16 @@ namespace PhysUnitTest
             Acceleration acceleration3 = (Acceleration)(acceleration1 + acceleration2);
 
             PhysicalUnit accelerationTest = acceleration1 * acceleration2;
+        }
 
-            Assert.AreEqual(expected: acceleration1.Value + acceleration2.Value, actual: acceleration3.Value);
+        [TestMethod]
+        [ExpectedException(typeof(InvalidUnitOperationException))]
+        public void InvalidDerivedUnitAdditionTest()
+        {
+            Velocity velocity = new Velocity(0);     
+            Acceleration acceleration = new Acceleration(0);
+
+            PhysicalUnit physicalUnit = velocity + acceleration;
         }
     }
 }

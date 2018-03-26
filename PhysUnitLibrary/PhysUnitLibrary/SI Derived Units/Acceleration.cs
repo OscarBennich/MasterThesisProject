@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
-{
+{   
+    /// <summary>
+    /// Acceleration (m/s2) - Dervied from length and time
+    /// </summary>
     public class Acceleration : DerivedUnit
     {   
         public Acceleration(double value)

@@ -4,9 +4,12 @@ using System.Text;
 
 namespace PhysUnitLibrary.Length_Units
 {
+    /// <summary>
+    /// Kilometre (km) - Equal to 1000m
+    /// </summary>
     public class Kilometre : Length
     {
-        private static double ConversionFactor = 1000; // 1 kilometre is equal to 1000m
+        private static double ConversionFactor = 1000; 
 
         public Kilometre(double value)
         {

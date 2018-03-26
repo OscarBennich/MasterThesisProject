@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PhysUnitLibrary.SI_Derived_Units
 {
+    /// <summary>
+    /// Force (N) - Derived from mass and acceleration
+    /// </summary>
     public class Force : DerivedUnit
     {
         public Force(double value)

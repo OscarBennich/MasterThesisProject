@@ -6,6 +6,7 @@ namespace PhysUnitLibrary.Length_Units
 {
     /// <summary>
     /// One of 7 physical unit dimensions
+    /// The base unit of length is the metre (m)
     /// </summary>
     public abstract class Length : PhysicalUnit
     {
@@ -83,6 +84,13 @@ namespace PhysUnitLibrary.Length_Units
             }
         }
 
+        /// <summary>
+        /// Contains functionality to properly create a new length object from two existing ones
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="firstLength"></param>
+        /// <param name="secondLength"></param>
+        /// <returns></returns>
         public static Metre CreateNewLengthObject(double value, Metre firstLength, Metre secondLength)
         {
             if (firstLength.MaxValue == null && secondLength.MaxValue != null) // Takes the max & min value from the first length

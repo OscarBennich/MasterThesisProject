@@ -4,6 +4,10 @@ using System.Text;
 
 namespace PhysUnitLibrary
 {
+    /// <summary>
+    /// This exception is thrown when a unit is below the the miniumum allowed value of it's range 
+    /// Often as a result of an operation involving another unit
+    /// </summary>
     public class UnderMinValueException : Exception
     {
         public UnderMinValueException() { }

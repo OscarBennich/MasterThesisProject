@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary.Time_Units
-{
+{   
+    /// <summary>
+    /// Second (s) - Base unit of time
+    /// </summary>
     public class Second : Time
     {
         public static double ConversionFactor = 1;

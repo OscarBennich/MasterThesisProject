@@ -4,9 +4,12 @@ using System.Text;
 
 namespace PhysUnitLibrary.Time_Units
 {
+    /// <summary>
+    /// Minute (m) - Equal to 60 seconds
+    /// </summary>
     public class Minute : Time 
     {
-        private static double ConversionFactor = 60; // 1 Minute is equal to 60sec
+        private static double ConversionFactor = 60; 
 
         public Minute(double value)
         {

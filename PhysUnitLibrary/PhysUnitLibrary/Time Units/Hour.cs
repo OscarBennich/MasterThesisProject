@@ -4,9 +4,12 @@ using System.Text;
 
 namespace PhysUnitLibrary.Time_Units
 {
+    /// <summary>
+    /// Hour (hr) - Equal to 3600 seconds
+    /// </summary>
     public class Hour : Time
     {
-        private static double ConversionFactor = 3600; // 1 Hour is equal to 3600sec
+        private static double ConversionFactor = 3600;
 
         public Hour(double value)
         {

@@ -2,9 +2,10 @@
 using System;
 
 namespace PhysUnitLibrary
-{   
+{
     /// <summary>
     /// One of 7 physical unit dimensions
+    /// The base unit of mass is the kilogram (kg)
     /// </summary>
     public abstract class Mass : PhysicalUnit
     {   
@@ -80,8 +81,15 @@ namespace PhysUnitLibrary
             {
                 return new Kilogram(newValue);
             }
-        }    
+        }
 
+        /// <summary>
+        /// Contains functionality to properly create a new mass object from two existing ones
+        /// </summary>
+        /// <param name="newValue"></param>
+        /// <param name="firstMass"></param>
+        /// <param name="secondMass"></param>
+        /// <returns></returns>
         public static Kilogram CreateNewMassObject(double newValue, Mass firstMass, Mass secondMass)
         {
 

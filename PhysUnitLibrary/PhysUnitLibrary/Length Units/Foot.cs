@@ -4,9 +4,12 @@ using System.Text;
 
 namespace PhysUnitLibrary.Length_Units
 {
+    /// <summary>
+    /// Foot (ft) - Equal to 0.3048m
+    /// </summary>
     public class Foot : Length
     {
-        private static double ConversionFactor = 1000; // 1 Foot is equal to 0.3048m
+        private static double ConversionFactor = 1000; 
 
         public Foot(double value)
         {

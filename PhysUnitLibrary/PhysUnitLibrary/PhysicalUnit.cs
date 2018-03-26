@@ -6,10 +6,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary
-{
+{   
+    /// <summary>
+    /// The superclass for all units in the library
+    /// </summary>
     public class PhysicalUnit
     {
-        public double Value { get; protected set; }
+        public double Value { get; protected set; } // The actual value of the unit, in its own quantity
         
         public int LengthDimension { get; protected set; }
 

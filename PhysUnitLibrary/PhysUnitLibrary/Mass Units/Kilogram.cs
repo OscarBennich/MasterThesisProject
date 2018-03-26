@@ -6,7 +6,7 @@ using System.Text;
 namespace PhysUnitLibrary
 {   
     /// <summary>
-    /// Basic unit of mass
+    /// Kilogram (kg) - Base unit of mass
     /// </summary>
     public class Kilogram : Mass
     {

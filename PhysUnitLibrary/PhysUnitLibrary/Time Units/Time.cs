@@ -8,6 +8,7 @@ namespace PhysUnitLibrary.Time_Units
 {
     /// <summary>
     /// One of 7 physical unit dimensions
+    /// The base unit of time is the second (s)
     /// </summary>
     public abstract class Time : PhysicalUnit
     {
@@ -85,6 +86,13 @@ namespace PhysUnitLibrary.Time_Units
             }
         }
 
+        /// <summary>
+        /// Contains functionality to properly create a new time object from two existing ones
+        /// </summary>
+        /// <param name="newValue"></param>
+        /// <param name="firstTime"></param>
+        /// <param name="secondTime"></param>
+        /// <returns></returns>
         public static Second CreateNewTimeObject(double newValue, Second firstTime, Second secondTime)
         {
             if (firstTime.MaxValue == null && secondTime.MaxValue != null) // Takes the max & min value from the first Time

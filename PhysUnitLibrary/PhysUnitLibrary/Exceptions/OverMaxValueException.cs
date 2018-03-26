@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary
-{
+{   
+    /// <summary>
+    /// This exception is thrown when a unit exceeds the maximum allowed value of it's range 
+    /// Often as a result of an operation involving another unit
+    /// </summary>
     public class OverMaxValueException : Exception
     {
         public OverMaxValueException() { }

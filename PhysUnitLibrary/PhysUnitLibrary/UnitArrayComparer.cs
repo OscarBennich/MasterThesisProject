@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace PhysUnitLibrary
-{
+{   
+    /// <summary>
+    /// Used to compare if two dimension arrays are equal
+    /// </summary>
     public class UnitArrayComparer : IEqualityComparer<int[]>
     {
         public bool Equals(int[] x, int[] y)
