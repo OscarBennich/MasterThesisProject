@@ -9,12 +9,10 @@ namespace PhysUnitLibrary.Mass_Units
     /// </summary>
     public class Pound : Mass
     {
-        public static double PoundConversionFactor = 0.45359237; // 1 pound is equal to to 0.45359237kg
+        public static double ConversionFactor = 0.45359237; // 1 pound is equal to to 0.45359237kg
 
         public Pound(double value)
         {
-            ConversionFactor = PoundConversionFactor;
-
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
@@ -32,8 +30,6 @@ namespace PhysUnitLibrary.Mass_Units
                 throw new UnderMinValueException("The mass is under the minimum allowed amount");
             }
 
-            ConversionFactor = PoundConversionFactor;
-
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
@@ -43,7 +39,6 @@ namespace PhysUnitLibrary.Mass_Units
             MaxValue = maxValue;
         }
 
-        #region Conversion Methods
         public override Kilogram Convert()
         {
             double newValue = Value * ConversionFactor;
@@ -61,14 +56,19 @@ namespace PhysUnitLibrary.Mass_Units
             }
         }
 
+        public override double GetConversionFactor()
+        {
+            return Pound.ConversionFactor;
+        }
+
         public static implicit operator Pound(Kilogram kilogram)
         {
-            double newValue = kilogram.Value * 1 / PoundConversionFactor;
+            double newValue = kilogram.Value * 1 / ConversionFactor;
 
             if (kilogram.MaxValue != null) // The kilogram object has a range set
             {
-                double newMinValue = (double)kilogram.MinValue * 1 / PoundConversionFactor;
-                double newMaxValue = (double)kilogram.MaxValue * 1 / PoundConversionFactor;
+                double newMinValue = (double)kilogram.MinValue * 1 / ConversionFactor;
+                double newMaxValue = (double)kilogram.MaxValue * 1 / ConversionFactor;
 
                 return new Pound(newValue, newMinValue, newMaxValue);
             }
@@ -82,7 +82,6 @@ namespace PhysUnitLibrary.Mass_Units
         {
             return tonne.Convert();
         }
-        #endregion
 
         public override string ToString()
         {

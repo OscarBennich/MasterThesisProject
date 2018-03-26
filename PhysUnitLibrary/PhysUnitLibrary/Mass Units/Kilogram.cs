@@ -9,10 +9,11 @@ namespace PhysUnitLibrary
     /// Basic unit of mass
     /// </summary>
     public class Kilogram : Mass
-    {   
+    {
+        public static double ConversionFactor = 1;
+
         public Kilogram(double value)
         {
-            ConversionFactor = 1;
             Value = value;
             LengthDimension = 0;
             TimeDimension = 0;
@@ -30,7 +31,6 @@ namespace PhysUnitLibrary
                 throw new UnderMinValueException("The mass is under the minimum allowed amount");
             }
 
-            ConversionFactor = 1;
             Value = value;  
             LengthDimension = 0;
             TimeDimension = 0;
@@ -45,14 +45,19 @@ namespace PhysUnitLibrary
             return this;
         }
 
+        public override double GetConversionFactor()
+        {
+            return Kilogram.ConversionFactor;
+        }
+
         public static implicit operator Kilogram(Pound pound)
         {
-            return new Kilogram(pound.Value * Pound.PoundConversionFactor); 
+            return new Kilogram(pound.Value * Pound.ConversionFactor); 
         }
 
         public static implicit operator Kilogram(Tonne tonne)
         {
-            return new Kilogram(tonne.Value * Tonne.TonneConversionFactor);
+            return new Kilogram(tonne.Value * Tonne.ConversionFactor);
         }
         #endregion
 

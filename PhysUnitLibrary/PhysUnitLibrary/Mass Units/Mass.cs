@@ -8,11 +8,11 @@ namespace PhysUnitLibrary
     /// </summary>
     public abstract class Mass : PhysicalUnit
     {   
-        public double ConversionFactor;
-
         // All inheriting classes must define how they are to be converted into kilogram
         // Kilogram being the basic unit of mass 
         public abstract Kilogram Convert();
+
+        public abstract double GetConversionFactor();
 
         public static Mass operator +(Mass firstMass, Mass secondMass)
         {   
@@ -150,23 +150,23 @@ namespace PhysUnitLibrary
             {
 
                 if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
-                {   
-                    double newMin = (double)secondMass.MinValue * secondMass.ConversionFactor;
-                    double newMax = (double)secondMass.MaxValue * secondMass.ConversionFactor;
+                {
+                    double newMin = (double)secondMass.MinValue * secondMass.GetConversionFactor();
+                    double newMax = (double)secondMass.MaxValue * secondMass.GetConversionFactor();
 
                     return new Kilogram(newValue, newMin, newMax);
                 }
                 else if (firstMass.MaxValue != null && secondMass.MaxValue == null) // Takes the max & min value from the second mass
                 {
-                    double newMin = (double)firstMass.MinValue * firstMass.ConversionFactor;
-                    double newMax = (double)firstMass.MaxValue * firstMass.ConversionFactor;
+                    double newMin = (double)firstMass.MinValue * firstMass.GetConversionFactor();
+                    double newMax = (double)firstMass.MaxValue * firstMass.GetConversionFactor();
 
                     return new Kilogram(newValue, newMin, newMax);
                 }
                 else if (firstMass.MaxValue != null && secondMass.MaxValue != null) // Takes the highest max value and the lowest min value from both masses 
                 {
-                    double newMin = Math.Min((double)firstMass.MinValue * firstMass.ConversionFactor, (double)secondMass.MinValue * secondMass.ConversionFactor);
-                    double newMax = Math.Max((double)firstMass.MaxValue * firstMass.ConversionFactor, (double)secondMass.MaxValue * secondMass.ConversionFactor);
+                    double newMin = Math.Min((double)firstMass.MinValue * firstMass.GetConversionFactor(), (double)secondMass.MinValue * secondMass.GetConversionFactor());
+                    double newMax = Math.Max((double)firstMass.MaxValue * firstMass.GetConversionFactor(), (double)secondMass.MaxValue * secondMass.GetConversionFactor());
 
                     return new Kilogram(newValue, newMin, newMax);
                 }
