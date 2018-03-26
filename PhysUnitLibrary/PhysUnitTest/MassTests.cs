@@ -92,16 +92,17 @@ namespace PhysUnitTest
             Kilogram kilogram1 = new Kilogram(value1, 100, 600);
             Pound pound1 = new Pound(value2);
 
-            Pound pound2 = (Pound)(kilogram1 + pound1);
+            Pound pound2 = new Kilogram(value1);
+             
+            Pound pound3 = kilogram1 + pound1;
 
             Assert.AreEqual(expected: (value2 + value1) * 2.20462262, actual: pound2.Value); // Should fail because of the range
         }
 
         [TestMethod]
-        //[ExpectedException(typeof(OverMaxValueException),AllowDerivedTypes = true)]
         public void OverMaxAllowedRangeAddIntToTonne()
         {
-            Tonne tonne = new Tonne(2, 0.01, 2.8);
+            Tonne tonne = new Tonne(2, 0.01, 9);
 
             try
             {

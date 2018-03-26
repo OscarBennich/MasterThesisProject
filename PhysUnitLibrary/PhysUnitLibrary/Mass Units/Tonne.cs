@@ -57,7 +57,7 @@ namespace PhysUnitLibrary.Mass_Units
 
         public override double GetConversionFactor()
         {
-            return Tonne.ConversionFactor;
+            return ConversionFactor;
         }
 
         public static implicit operator Tonne(Kilogram kilogram)

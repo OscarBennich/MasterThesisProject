@@ -47,7 +47,7 @@ namespace PhysUnitLibrary
 
         public override double GetConversionFactor()
         {
-            return Kilogram.ConversionFactor;
+            return ConversionFactor;
         }
 
         public static implicit operator Kilogram(Pound pound)

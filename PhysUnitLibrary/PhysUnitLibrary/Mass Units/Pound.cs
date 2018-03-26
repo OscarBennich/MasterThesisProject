@@ -58,7 +58,7 @@ namespace PhysUnitLibrary.Mass_Units
 
         public override double GetConversionFactor()
         {
-            return Pound.ConversionFactor;
+            return ConversionFactor;
         }
 
         public static implicit operator Pound(Kilogram kilogram)
@@ -82,7 +82,7 @@ namespace PhysUnitLibrary.Mass_Units
         {
             return tonne.Convert();
         }
-
+            
         public override string ToString()
         {
             return Value + "lb";

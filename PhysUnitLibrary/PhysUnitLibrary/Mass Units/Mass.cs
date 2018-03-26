@@ -14,172 +14,99 @@ namespace PhysUnitLibrary
 
         public abstract double GetConversionFactor();
 
-        public static Mass operator +(Mass firstMass, Mass secondMass)
-        {   
-            if(IsSameType(firstMass, secondMass))
-            {
-                double value = firstMass.Value + secondMass.Value;
-                return CreateNewMassObject(value, firstMass, secondMass);
-            }
-            else
-            {
-                double value = firstMass.Convert().Value + secondMass.Convert().Value;
-                return CreateNewMassObject(value, firstMass, secondMass);
-            }
+        public static Kilogram operator +(Mass firstMass, Mass secondMass)
+        {
+            double value = firstMass.Value + secondMass.Value;
+            return CreateNewMassObject(value, firstMass, secondMass);
         }
 
-        public static Mass operator +(Mass mass, double operationValue)
+        public static Kilogram operator -(Mass firstMass, Mass secondMass)
         {
-            Type physicalUnitType = mass.GetType();
+            double value = firstMass.Value + secondMass.Value;
+            return CreateNewMassObject(value, firstMass, secondMass);
+        }
+
+        public static Kilogram operator +(Mass mass, double operationValue)
+        {
             double newValue = mass.Value + operationValue;
 
             if(mass.MaxValue != null)
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, mass.MinValue, mass.MaxValue });
-                return massUnit;
+                return new Kilogram(newValue, (double)mass.MinValue, (double)mass.MaxValue);
             }
             else
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue });
-                return massUnit;
+                return new Kilogram(newValue);
             }        
         }
 
-        public static Mass operator -(Mass firstMass, Mass secondMass)
+        public static Kilogram operator -(Mass mass, double operationValue)
         {
-            if (IsSameType(firstMass, secondMass))
-            {
-                double value = firstMass.Value - secondMass.Value;
-                return CreateNewMassObject(value, firstMass, secondMass);
-            }
-            else
-            {
-                double value = firstMass.Convert().Value - secondMass.Convert().Value;
-                return CreateNewMassObject(value, firstMass, secondMass);
-            }
-        }
-
-        public static Mass operator -(Mass mass, double operationValue)
-        {
-            Type physicalUnitType = mass.GetType();
-            double newValue = mass.Value - operationValue;
+            double newValue = mass.Value + operationValue;
 
             if (mass.MaxValue != null)
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, mass.MinValue, mass.MaxValue });
-                return massUnit;
+                return new Kilogram(newValue, (double)mass.MinValue, (double)mass.MaxValue);
             }
             else
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue });
-                return massUnit;
+                return new Kilogram(newValue);
             }
         }
 
-        public static Mass operator *(Mass mass, double operationValue)
+        public static Kilogram operator *(Mass mass, double operationValue)
         {
-            Type physicalUnitType = mass.GetType();
-            double newValue = mass.Value - operationValue;
+            double newValue = mass.Value * operationValue;
 
             if (mass.MaxValue != null)
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, mass.MinValue, mass.MaxValue });
-                return massUnit;
+                return new Kilogram(newValue, (double)mass.MinValue, (double)mass.MaxValue);
             }
             else
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue });
-                return massUnit;
+                return new Kilogram(newValue);
             }
         }
 
-        public static Mass operator /(Mass mass, double operationValue)
+        public static Kilogram operator /(Mass mass, double operationValue)
         {
-            Type physicalUnitType = mass.GetType();
-            double newValue = mass.Value - operationValue;
+            double newValue = mass.Value / operationValue;
 
             if (mass.MaxValue != null)
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, mass.MinValue, mass.MaxValue });
-                return massUnit;
+                return new Kilogram(newValue, (double)mass.MinValue, (double)mass.MaxValue);
             }
             else
             {
-                Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue });
-                return massUnit;
+                return new Kilogram(newValue);
             }
         }    
 
-        public static Mass CreateNewMassObject(double newValue, Mass firstMass, Mass secondMass)
+        public static Kilogram CreateNewMassObject(double newValue, Mass firstMass, Mass secondMass)
         {
-            if(IsSameType(firstMass,secondMass)) // If the masses are of the same type, they will be returned as that type (instead of kilograms)
+
+            if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
             {
-                Type physicalUnitType = firstMass.GetType();
-
-                if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
-                {
-                    double newMin = (double)secondMass.MinValue;
-                    double newMax = (double)secondMass.MaxValue;
-
-                    Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, newMin, newMax });
-                    return massUnit;
-                }
-                else if (firstMass.MaxValue != null && secondMass.MaxValue == null) // Takes the max & min value from the second mass
-                {
-                    double newMin = (double)firstMass.MinValue;
-                    double newMax = (double)firstMass.MaxValue;
-   
-                    Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, newMin, newMax });
-                    return massUnit;
-                }
-                else if (firstMass.MaxValue != null && secondMass.MaxValue != null) // Takes the highest max value and the lowest min value from both masses 
-                {
-                    double newMin = Math.Min((double)firstMass.MinValue, (double)secondMass.MinValue);
-                    double newMax = Math.Max((double)firstMass.MaxValue, (double)secondMass.MaxValue);
-
-                    Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue, newMin, newMax });
-                    return massUnit;
-                }
-                else // None of the masses has a range set
-                {
-                    Mass massUnit = (Mass)Activator.CreateInstance(physicalUnitType, new Object[] { newValue });
-                    return massUnit;
-                }
+                double newMin = (double)secondMass.MinValue;
+                double newMax = (double)secondMass.MaxValue;
+                return new Kilogram(newValue, newMin, newMax);
             }
-            else
+            else if (firstMass.MaxValue != null && secondMass.MaxValue == null) // Takes the max & min value from the second mass
             {
-
-                if (firstMass.MaxValue == null && secondMass.MaxValue != null) // Takes the max & min value from the first mass
-                {
-                    double newMin = (double)secondMass.MinValue * secondMass.GetConversionFactor();
-                    double newMax = (double)secondMass.MaxValue * secondMass.GetConversionFactor();
-
-                    return new Kilogram(newValue, newMin, newMax);
-                }
-                else if (firstMass.MaxValue != null && secondMass.MaxValue == null) // Takes the max & min value from the second mass
-                {
-                    double newMin = (double)firstMass.MinValue * firstMass.GetConversionFactor();
-                    double newMax = (double)firstMass.MaxValue * firstMass.GetConversionFactor();
-
-                    return new Kilogram(newValue, newMin, newMax);
-                }
-                else if (firstMass.MaxValue != null && secondMass.MaxValue != null) // Takes the highest max value and the lowest min value from both masses 
-                {
-                    double newMin = Math.Min((double)firstMass.MinValue * firstMass.GetConversionFactor(), (double)secondMass.MinValue * secondMass.GetConversionFactor());
-                    double newMax = Math.Max((double)firstMass.MaxValue * firstMass.GetConversionFactor(), (double)secondMass.MaxValue * secondMass.GetConversionFactor());
-
-                    return new Kilogram(newValue, newMin, newMax);
-                }
-                else // None of the masses has a range set
-                {
-                    return new Kilogram(newValue);
-                }
+                double newMin = (double)firstMass.MinValue;
+                double newMax = (double)firstMass.MaxValue;
+                return new Kilogram(newValue, newMin, newMax);
             }
-        }
-
-        public static bool IsSameType(Mass firstMass, Mass secondMass)
-        {
-            return firstMass.GetType().IsEquivalentTo(secondMass.GetType());
+            else if (firstMass.MaxValue != null && secondMass.MaxValue != null) // Takes the highest max value and the lowest min value from both masses 
+            {
+                double newMin = Math.Min((double)firstMass.MinValue, (double)secondMass.MinValue);
+                double newMax = Math.Max((double)firstMass.MaxValue, (double)secondMass.MaxValue);
+                return new Kilogram(newValue, newMin, newMax);
+            }
+            else // None of the masses has a range set
+            {
+                return new Kilogram(newValue);
+            }
         }
     }
 }
