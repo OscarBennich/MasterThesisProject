@@ -18,7 +18,7 @@ namespace PhysUnitTest
             Kilogram kilogram1 = new Kilogram(value1); 
             Kilogram kilogram2 = new Kilogram(value2, 10,340); // Lowest allowed is 100, highest is 340
 
-            Kilogram kilogram3 = (Kilogram)(kilogram1 + kilogram2);
+            Kilogram kilogram3 = kilogram1 + kilogram2;
                 
             Assert.AreEqual(expected: value1 + value2, actual: kilogram3.Value); // Should fail because of the range
         }
@@ -48,9 +48,9 @@ namespace PhysUnitTest
             Kilogram kilogram1 = new Kilogram(value1, 100, 350);
             Kilogram kilogram2 = new Kilogram(value2);
 
-            Pound pound = (Pound)(kilogram1 + kilogram2);
+            Pound pound = kilogram1 + kilogram2;
 
-            Assert.AreEqual(expected: (value2 + value1) * 2.20462262, actual: pound.Value); // Should fail because of the range
+            Assert.AreEqual(expected: (value2 + value1) * pound.GetConversionFactor(), actual: pound.Value); // Should fail because of the range
         }
 
         //[TestMethod]

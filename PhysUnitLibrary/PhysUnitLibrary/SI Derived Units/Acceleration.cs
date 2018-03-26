@@ -5,7 +5,7 @@ using System.Text;
 namespace PhysUnitLibrary.SI_Derived_Units
 {
     public class Acceleration : DerivedUnits
-    {
+    {   
         public Acceleration(double value)
         {
             Value = value;
